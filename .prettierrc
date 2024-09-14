@@ -1,1 +1,1 @@
-{ "plugin": ["prettier-plugin-tailwind"] }
+{ "singleQuote": true, "plugins": ["prettier-plugin-tailwind"] }
