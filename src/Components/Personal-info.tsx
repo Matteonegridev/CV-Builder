@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Form } from '../Utils/Form';
 import { Input } from '../Utils/Inputs';
+import { ChangeEvent } from 'react';
 
-type FormData = {
+type PersonalData = {
   fullName: string;
   mobile: string;
   address: string;
@@ -10,11 +11,12 @@ type FormData = {
 };
 
 type PersonalInfoProps = {
-  formData: FormData;
+  personalData: PersonalData;
+  handleChangePersonal : (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 
-function PersonalInfo({ formData }: PersonalInfoProps) {
+function PersonalInfo({ personalData ,handleChangePersonal }: PersonalInfoProps) {
   const [edit, setEdit] = useState<boolean>(false);
 
   return (
@@ -24,10 +26,10 @@ function PersonalInfo({ formData }: PersonalInfoProps) {
     {edit ? 'Edit' : 'Save'} Personal Info
   </button>
   <div className="flex flex-col gap-4">
-    <Input label='Full Name' text={formData.fullName}/>
-    <Input label='Email' text={formData.email}/>
-    <Input label='Mobile' text={formData.mobile}/>
-    <Input label='Address' text={formData.address}/>
+    <Input label='Full Name' text={personalData.fullName} name='full-name' onChange={handleChangePersonal}/>
+    <Input label='Email' text={personalData.email} name='email' onChange={handleChangePersonal}/>
+    <Input label='Mobile' text={personalData.mobile} name='mobile' onChange={handleChangePersonal}/>
+    <Input label='Address' text={personalData.address} name='address' onChange={handleChangePersonal}/>
   </div>
 </Form>
     </>
