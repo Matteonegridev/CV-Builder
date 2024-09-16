@@ -24,7 +24,7 @@ function EducationField({
   return (
     <Form edit={edit} setEdit={setEdit}>
       <button className="self-center justify-self-center rounded-md bg-blue-500 px-5 py-2 text-white ~text-base/xl">
-        {edit ? 'Edit' : 'Save'} Experience Info
+        {edit ? 'Edit' : 'Save'} Education Info
       </button>
       <Input
         label="School Name"

@@ -4,6 +4,7 @@ import { Resume } from './Layout/Resume';
 import PersonalInfo from './Components/Personal-info';
 import ExperienceField from './Components/Experience';
 import EducationField from './Components/Education';
+import SkillsField from './Components/Skills';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 
@@ -27,6 +28,9 @@ function App() {
     location: 'Location:',
     startDate: 'Start Date',
     endDate: 'End Date or Current',
+  });
+  const [skillsData, setSkillsData] = useState({
+    skills: '',
   });
 
   function handleChangePersonal(e: ChangeEvent<HTMLInputElement>) {
@@ -54,6 +58,15 @@ function App() {
     }));
   }
 
+  function handleChangeSkills(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    setSkillsData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
   return (
     <Body>
       <InfoSection>
@@ -68,6 +81,10 @@ function App() {
         <EducationField
           educationData={educationData}
           handleChangeEducation={handleChangeEducation}
+        />
+        <SkillsField
+          skillsData={skillsData}
+          handleChangeSkills={handleChangeSkills}
         />
       </InfoSection>
       <Resume />
