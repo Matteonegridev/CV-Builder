@@ -3,6 +3,7 @@ import { Body } from './Layout/Body';
 import { Resume } from './Layout/Resume';
 import PersonalInfo from './Components/Personal-info';
 import ExperienceField from './Components/Experience';
+import EducationField from './Components/Education';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 
@@ -19,6 +20,13 @@ function App() {
     startDate: 'Start Date',
     endDate: 'End Date or Current',
     description: '',
+  });
+  const [educationData, setEducationData] = useState({
+    schoolName: 'School',
+    title: 'Title',
+    location: 'Location:',
+    startDate: 'Start Date',
+    endDate: 'End Date or Current',
   });
 
   function handleChangePersonal(e: ChangeEvent<HTMLInputElement>) {
@@ -38,6 +46,14 @@ function App() {
     }));
   }
 
+  function handleChangeEducation(e: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setEducationData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
   return (
     <Body>
       <InfoSection>
@@ -48,6 +64,10 @@ function App() {
         <ExperienceField
           experienceData={experienceData}
           handleChangeExperience={handleChangeExperience}
+        />
+        <EducationField
+          educationData={educationData}
+          handleChangeEducation={handleChangeEducation}
         />
       </InfoSection>
       <Resume />
