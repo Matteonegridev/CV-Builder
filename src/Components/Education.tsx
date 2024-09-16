@@ -28,7 +28,7 @@ function EducationField({
       </button>
       <Input
         label="School Name"
-        name="school-name"
+        name="schoolName"
         onChange={handleChangeEducation}
         text={educationData.schoolName}
       />
@@ -46,13 +46,13 @@ function EducationField({
       />
       <Input
         label="Start Date"
-        name="start-date"
+        name="startDate"
         onChange={handleChangeEducation}
         text={educationData.startDate}
       />
       <Input
         label="End Date"
-        name="end-date"
+        name="endDate"
         onChange={handleChangeEducation}
         text={educationData.endDate}
       />

@@ -31,7 +31,7 @@ function ExperienceField({
       <Input
         label="Company Name"
         text={experienceData.companyName}
-        name="company-name"
+        name="companyName"
         onChange={handleChangeExperience}
       />
       <Input
@@ -43,13 +43,13 @@ function ExperienceField({
       <Input
         label="Start Date"
         text={experienceData.startDate}
-        name="start-date"
+        name="startDate"
         onChange={handleChangeExperience}
       />
       <Input
         label="End Date"
         text={experienceData.endDate}
-        name="end-date"
+        name="endDate"
         onChange={handleChangeExperience}
       />
       <Textarea

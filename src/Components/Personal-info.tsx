@@ -31,7 +31,7 @@ function PersonalInfo({
           <Input
             label="Full Name"
             text={personalData.fullName}
-            name="full-name"
+            name="fullName"
             onChange={handleChangePersonal}
           />
           <Input

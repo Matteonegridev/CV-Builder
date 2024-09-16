@@ -5,6 +5,7 @@ import PersonalInfo from './Components/Personal-info';
 import ExperienceField from './Components/Experience';
 import EducationField from './Components/Education';
 import SkillsField from './Components/Skills';
+import CurriculumVitae from './Components/CV';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 
@@ -87,7 +88,9 @@ function App() {
           handleChangeSkills={handleChangeSkills}
         />
       </InfoSection>
-      <Resume />
+      <Resume>
+        <CurriculumVitae personalData={personalData} />
+      </Resume>
     </Body>
   );
 }

@@ -1,3 +1,9 @@
-export function Resume() {
-  return <section className="">Hello</section>;
+import { ReactNode } from 'react';
+
+type ResumeProp = {
+  children: ReactNode;
+};
+
+export function Resume({ children }: ResumeProp): JSX.Element {
+  return <section className="">{children}</section>;
 }
