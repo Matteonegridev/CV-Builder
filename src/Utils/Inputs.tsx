@@ -14,12 +14,17 @@ type TextareaProp = {
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
-export function Input({ label, text, name, onChange }: InputProps) {
+export function Input({
+  label,
+  text,
+  name,
+  onChange,
+}: InputProps): JSX.Element {
   return (
     <div className="flex flex-col">
       <label className="~text-base/xl">{label}</label>
       <input
-        className="border py-2 px-2"
+        className="border px-2 py-2"
         placeholder={text}
         name={name}
         onChange={onChange}
@@ -28,12 +33,17 @@ export function Input({ label, text, name, onChange }: InputProps) {
   );
 }
 
-export function Textarea({ label, value, name, onChange }: TextareaProp) {
+export function Textarea({
+  label,
+  value,
+  name,
+  onChange,
+}: TextareaProp): JSX.Element {
   return (
     <div className="flex flex-col">
       <label className="~text-base/xl">{label}</label>
       <textarea
-        className="border resize-none w-full ~h-14/28 p-2 overflow-y-hidden "
+        className="w-full resize-none overflow-y-hidden border p-2 ~h-14/28"
         onChange={onChange}
         value={value}
         name={name}

@@ -25,7 +25,7 @@ function ExperienceField({
 
   return (
     <Form edit={edit} setEdit={setEdit}>
-      <button className="bg-blue-500 py-2 px-5 rounded-md text-white ~text-base/xl justify-self-center self-center">
+      <button className="self-center justify-self-center rounded-md bg-blue-500 px-5 py-2 text-white ~text-base/xl">
         {edit ? 'Edit' : 'Save'} Experience Info
       </button>
       <Input

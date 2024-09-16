@@ -3,5 +3,9 @@ type Props = {
 };
 
 export function Body({ children }: Props) {
-  return <main className="grid grid-cols-[500px_1fr] gap-12 min-h-full m-10 max-sm:grid-cols-1">{children}</main>;
+  return (
+    <main className="m-10 grid min-h-full grid-cols-[500px_1fr] gap-12 max-sm:grid-cols-1">
+      {children}
+    </main>
+  );
 }
