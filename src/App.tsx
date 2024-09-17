@@ -2,96 +2,71 @@ import { InfoSection } from './Layout/Info';
 import { Body } from './Layout/Body';
 import { Resume } from './Layout/Resume';
 import PersonalInfo from './Components/Personal-info';
-import ExperienceField from './Components/Experience';
-import EducationField from './Components/Education';
-import SkillsField from './Components/Skills';
-import CurriculumVitae from './Components/CV';
+// import ExperienceField from './Components/Experience';
+// import EducationField from './Components/Education';
+// import SkillsField from './Components/Skills';
+
 import { useState } from 'react';
-import { ChangeEvent } from 'react';
+
+export type PersonalData = {
+  fullName: string;
+  position: string;
+  mobile: string;
+  address: string;
+  email: string;
+};
+
+export type ExperienceData = {
+  companyName: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+};
+
+export type EducationData = {
+  schoolName: string;
+  title: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+};
+
+export type SkillsData = {
+  skills: string[];
+};
 
 function App() {
-  const [personalData, setPersonalData] = useState({
-    fullName: 'Full Name',
-    position: 'Position',
-    mobile: '+XX XXX-XXXX-XXX',
-    address: '4th Avenue New York',
-    email: 'E-mail',
-  });
-  const [experienceData, setExperienceData] = useState({
-    companyName: 'Company',
-    position: 'Position',
-    startDate: 'Start Date',
-    endDate: 'End Date or Current',
-    description: '',
-  });
-  const [educationData, setEducationData] = useState({
-    schoolName: 'School',
-    title: 'Title',
-    location: 'Location:',
-    startDate: 'Start Date',
-    endDate: 'End Date or Current',
-  });
-  const [skillsData, setSkillsData] = useState({
-    skills: '',
-  });
+  const [personalData, setPersonalData] = useState([
+    { fullName: '', position: '', mobile: '', address: '', email: '' },
+  ]);
 
-  function handleChangePersonal(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setPersonalData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  function handleChangeExperience(
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) {
-    setExperienceData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  }
-
-  function handleChangeEducation(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setEducationData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  function handleChangeSkills(
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) {
-    setSkillsData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  }
+  // const [experienceData, setExperienceData] = useState<ExperienceData[]>([
+  //   {
+  //     companyName: '',
+  //     position: '',
+  //     startDate: '',
+  //     endDate: '',
+  //     description: '',
+  //   },
+  // ]);
+  // const [educationData, setEducationData] = useState<EducationData[]>([
+  //   {
+  //     schoolName: '',
+  //     title: '',
+  //     location: '',
+  //     startDate: '',
+  //     endDate: '',
+  //   },
+  // ]);
+  // const [skillsData, setSkillsData] = useState([]);
 
   return (
     <Body>
       <InfoSection>
-        <PersonalInfo
-          personalData={personalData}
-          handleChangePersonal={handleChangePersonal}
-        />
-        <ExperienceField
-          experienceData={experienceData}
-          handleChangeExperience={handleChangeExperience}
-        />
-        <EducationField
-          educationData={educationData}
-          handleChangeEducation={handleChangeEducation}
-        />
-        <SkillsField
-          skillsData={skillsData}
-          handleChangeSkills={handleChangeSkills}
-        />
+        <PersonalInfo personalData={personalData} />
       </InfoSection>
-      <Resume>
-        <CurriculumVitae personalData={personalData} />
-      </Resume>
+      <Resume children={undefined}></Resume>
     </Body>
   );
 }

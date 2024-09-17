@@ -5,5 +5,9 @@ type ResumeProp = {
 };
 
 export function Resume({ children }: ResumeProp): JSX.Element {
-  return <section className="border border-slate-700">{children}</section>;
+  return (
+    <section className="min-h-screen border border-slate-700">
+      {children}
+    </section>
+  );
 }
