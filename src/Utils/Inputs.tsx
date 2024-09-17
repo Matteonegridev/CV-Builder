@@ -5,6 +5,7 @@ type InputProps = {
   id: string;
   text: string;
   name: string;
+  value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -19,6 +20,7 @@ export function Input({
   label,
   text,
   id,
+  value,
   name,
   onChange,
 }: InputProps): JSX.Element {
@@ -26,6 +28,7 @@ export function Input({
     <div className="flex flex-col">
       <label className="~text-base/xl">{label}</label>
       <input
+        value={value}
         id={id}
         className="border px-2 py-2"
         placeholder={text}

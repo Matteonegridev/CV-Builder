@@ -27,6 +27,7 @@ function EducationField({
         {edit ? 'Edit' : 'Save'} Education Info
       </button>
       <Input
+        value={educationData.schoolName}
         id="schoolName"
         label="School Name"
         name="schoolName"
@@ -34,6 +35,7 @@ function EducationField({
         text={educationData.schoolName}
       />
       <Input
+        value={educationData.title}
         id="title"
         label="Title"
         name="title"
@@ -41,6 +43,7 @@ function EducationField({
         text={educationData.title}
       />
       <Input
+        value={educationData.location}
         id="location"
         label="Location"
         name="lacation"
@@ -48,6 +51,7 @@ function EducationField({
         text={educationData.location}
       />
       <Input
+        value={educationData.startDate}
         id="startDate"
         label="Start Date"
         name="startDate"
@@ -55,6 +59,7 @@ function EducationField({
         text={educationData.startDate}
       />
       <Input
+        value={educationData.endDate}
         id="endDate"
         label="End Date"
         name="endDate"
