@@ -2,6 +2,7 @@ import { ChangeEvent } from 'react';
 
 type InputProps = {
   label: string;
+  id: string;
   text: string;
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -17,6 +18,7 @@ type TextareaProp = {
 export function Input({
   label,
   text,
+  id,
   name,
   onChange,
 }: InputProps): JSX.Element {
@@ -24,6 +26,7 @@ export function Input({
     <div className="flex flex-col">
       <label className="~text-base/xl">{label}</label>
       <input
+        id={id}
         className="border px-2 py-2"
         placeholder={text}
         name={name}

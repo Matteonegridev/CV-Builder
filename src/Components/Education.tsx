@@ -27,30 +27,35 @@ function EducationField({
         {edit ? 'Edit' : 'Save'} Education Info
       </button>
       <Input
+        id="schoolName"
         label="School Name"
         name="schoolName"
         onChange={handleChangeEducation}
         text={educationData.schoolName}
       />
       <Input
+        id="title"
         label="Title"
         name="title"
         onChange={handleChangeEducation}
         text={educationData.title}
       />
       <Input
+        id="location"
         label="Location"
         name="lacation"
         onChange={handleChangeEducation}
         text={educationData.location}
       />
       <Input
+        id="startDate"
         label="Start Date"
         name="startDate"
         onChange={handleChangeEducation}
         text={educationData.startDate}
       />
       <Input
+        id="endDate"
         label="End Date"
         name="endDate"
         onChange={handleChangeEducation}
