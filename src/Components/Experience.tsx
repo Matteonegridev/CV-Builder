@@ -3,20 +3,14 @@ import { Form } from '../Utils/Form';
 import { Input } from '../Utils/Inputs';
 import { Textarea } from '../Utils/Inputs';
 
-type ExperienceData = {
-  companyName: string;
-  position: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-};
+import { type ExperienceData } from '../App';
+
 type ExperienceFieldProp = {
-  experienceData: ExperienceData;
+  experienceData: ExperienceData[];
   handleChangeExperience: (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ) => void;
 };
-
 function ExperienceField({
   experienceData,
   handleChangeExperience,
@@ -29,32 +23,40 @@ function ExperienceField({
         {edit ? 'Edit' : 'Save'} Experience Info
       </button>
       <Input
+        id="company-name"
+        value={experienceData[0].companyName}
         label="Company Name"
-        text={experienceData.companyName}
+        text={experienceData[0].companyName}
         name="companyName"
         onChange={handleChangeExperience}
       />
       <Input
+        id="position"
+        value={experienceData[0].position}
         label="Position"
-        text={experienceData.position}
+        text={experienceData[0].position}
         name="position"
         onChange={handleChangeExperience}
       />
       <Input
+        id="startDate"
+        value={experienceData[0].startDate}
         label="Start Date"
-        text={experienceData.startDate}
+        text={experienceData[0].startDate}
         name="startDate"
         onChange={handleChangeExperience}
       />
       <Input
+        id="endDate"
+        value={experienceData[0].endDate}
         label="End Date"
-        text={experienceData.endDate}
+        text={experienceData[0].endDate}
         name="endDate"
         onChange={handleChangeExperience}
       />
       <Textarea
         label="Position Info"
-        value={experienceData.description}
+        value={experienceData[0].description}
         name="description"
         onChange={handleChangeExperience}
       />

@@ -3,13 +3,7 @@ import { Form } from '../Utils/Form';
 import { Input } from '../Utils/Inputs';
 import { ChangeEvent } from 'react';
 
-type PersonalData = {
-  fullName: string;
-  position: string;
-  mobile: string;
-  address: string;
-  email: string;
-};
+import { type PersonalData } from '../App';
 
 type PersonalInfoProps = {
   personalData: PersonalData;

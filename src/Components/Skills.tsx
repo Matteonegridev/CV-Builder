@@ -2,12 +2,10 @@ import { ChangeEvent, useState } from 'react';
 import { Form } from '../Utils/Form';
 import { Textarea } from '../Utils/Inputs';
 
-type SkillsData = {
-  skills: string;
-};
+import { type SkillsData } from '../App';
 
 type SkillsDataProp = {
-  skillsData: SkillsData;
+  skillsData: SkillsData[];
   handleChangeSkills: (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ) => void;
@@ -28,7 +26,7 @@ function SkillsField({
         label="Skills"
         name="skills"
         onChange={handleChangeSkills}
-        value={skillsData.skills}
+        value={skillsData[0].skills}
       />
     </Form>
   );

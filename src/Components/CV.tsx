@@ -1,16 +1,16 @@
-type PersonalData = {
-  fullName: string;
-  mobile: string;
-  address: string;
-  email: string;
-  position: string;
-};
+import { type PersonalData } from '../App';
+import { type ExperienceData } from '../App';
+import { type EducationData } from '../App';
+import { type SkillsData } from '../App';
 
-type PersonalInfoProps = {
+type CVProps = {
   personalData: PersonalData;
+  experienceData: ExperienceData[];
+  educationData: EducationData[];
+  skillsData: SkillsData[];
 };
 
-function CurriculumVitae({ personalData }: PersonalInfoProps) {
+function CurriculumVitae({ personalData, educationData }: CVProps) {
   return (
     <>
       <div className="p-7">
@@ -24,6 +24,24 @@ function CurriculumVitae({ personalData }: PersonalInfoProps) {
           <p>{personalData.address}</p>
         </div>
         <hr />
+
+        {/* Experience Section */}
+        <div className="mt-10">
+          <h2 className="text-xl font-bold">Education</h2>
+          <ul className="mt-5">
+            {educationData.map((edu, index) => (
+              <li key={index} className="mb-3">
+                <h3 className="font-semibold">
+                  {edu.schoolName} at {edu.location}
+                </h3>
+                <p className="text-sm">
+                  {edu.startDate} - {edu.endDate}
+                </p>
+                <p className="text-sm">{edu.title}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   );
