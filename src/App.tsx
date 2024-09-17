@@ -12,6 +12,7 @@ import { ChangeEvent } from 'react';
 function App() {
   const [personalData, setPersonalData] = useState({
     fullName: 'Full Name',
+    position: 'Position',
     mobile: '+XX XXX-XXXX-XXX',
     address: '4th Avenue New York',
     email: 'E-mail',

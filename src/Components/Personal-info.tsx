@@ -5,6 +5,7 @@ import { ChangeEvent } from 'react';
 
 type PersonalData = {
   fullName: string;
+  position: string;
   mobile: string;
   address: string;
   email: string;
@@ -29,24 +30,40 @@ function PersonalInfo({
         </button>
         <div className="flex flex-col gap-4">
           <Input
+            id="fullName"
+            value={personalData.fullName}
             label="Full Name"
             text={personalData.fullName}
             name="fullName"
             onChange={handleChangePersonal}
           />
           <Input
+            id="position"
+            value={personalData.position}
+            label="Position"
+            text={personalData.position}
+            name="position"
+            onChange={handleChangePersonal}
+          />
+          <Input
+            id="email"
+            value={personalData.email}
             label="Email"
             text={personalData.email}
             name="email"
             onChange={handleChangePersonal}
           />
           <Input
+            id="mobile"
+            value={personalData.mobile}
             label="Mobile"
             text={personalData.mobile}
             name="mobile"
             onChange={handleChangePersonal}
           />
           <Input
+            id="address"
+            value={personalData.address}
             label="Address"
             text={personalData.address}
             name="address"
