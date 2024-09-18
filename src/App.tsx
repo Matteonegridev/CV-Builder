@@ -16,7 +16,7 @@ export type PersonalData = {
   mobile: string;
   address: string;
   email: string;
-};
+}[];
 
 export type EducationData = {
   id: string;
@@ -25,7 +25,7 @@ export type EducationData = {
   location: string;
   startDate: string;
   endDate: string;
-};
+}[];
 
 export type ExperienceData = {
   id: string;
@@ -34,12 +34,12 @@ export type ExperienceData = {
   startDate: string;
   endDate: string;
   description: string;
-};
+}[];
 
 export type SkillsData = {
   id: string;
-  skills: string[];
-};
+  skills: string;
+}[];
 
 function App() {
   const [personalData, setPersonalData] = useState([
@@ -61,10 +61,10 @@ function App() {
     });
   }
 
-  const [educationData, setEducationData] = useState<EducationData[]>([
+  const [educationData, setEducationData] = useState<EducationData>([
     {
       id: uuidv4(),
-      schoolName: '',
+      schoolName: 'Federico II',
       title: '',
       location: '',
       startDate: '',

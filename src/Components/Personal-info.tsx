@@ -5,7 +5,7 @@ import { type PersonalData } from '../App';
 import { ChangeEvent } from 'react';
 
 type PersonalInfoProp = {
-  personalData: PersonalData[];
+  personalData: PersonalData;
   handlePersonalData: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
