@@ -28,19 +28,19 @@ function CurriculumVitae({ personalData, educationData }: CVProps) {
         {/* Experience Section */}
         <div className="mt-10">
           <h2 className="text-xl font-bold">Education</h2>
-          <ul className="mt-5">
-            {educationData.map((edu, index) => (
-              <li key={index} className="mb-3">
-                <h3 className="font-semibold">
-                  {edu.schoolName} at {edu.location}
-                </h3>
-                <p className="text-sm">
-                  {edu.startDate} - {edu.endDate}
-                </p>
-                <p className="text-sm">{edu.title}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="pb-7 pt-10">
+            <h1 className="font-bold ~text-3xl/5xl">
+              {educationData[0].schoolName}
+            </h1>
+            <p className="mt-5 w-[20ch] ~text-base/lg">
+              {educationData[0].title}
+            </p>
+          </div>
+          <div className="flex justify-around p-4 ~text-xs/lg [&>p]:text-slate-400">
+            <p>{educationData[0].location}</p>
+            <p>{educationData[0].startDate}</p>
+            <p>{educationData[0].endDate}</p>
+          </div>
         </div>
       </div>
     </>

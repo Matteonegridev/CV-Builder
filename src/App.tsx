@@ -90,14 +90,11 @@ function App() {
     }));
   }
 
-  function handleChangeEducation(
-    e: ChangeEvent<HTMLInputElement>,
-    index: number,
-  ) {
+  function handleChangeEducation(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setEducationData((prev) => ({
       ...prev,
-      [name[index]]: value,
+      [name]: value,
     }));
   }
 
@@ -108,6 +105,20 @@ function App() {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  }
+
+  function handleAddEducation() {
+    setEducationData([
+      ...educationData,
+      {
+        id: uuidv4(),
+        schoolName: '',
+        title: '',
+        location: '',
+        startDate: '',
+        endDate: '',
+      },
+    ]);
   }
 
   return (
@@ -122,9 +133,10 @@ function App() {
           handleChangeExperience={handleChangeExperience}
         />
         <EducationField
-          setEducationData={setEducationData}
+          // setEducationData={setEducationData}
           educationData={educationData}
           handleChangeEducation={handleChangeEducation}
+          handleAddEducation={handleAddEducation}
         />
         <SkillsField
           skillsData={skillsData}

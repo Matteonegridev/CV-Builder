@@ -7,30 +7,18 @@ import { type EducationData } from '../App';
 
 type EducationFieldProp = {
   educationData: EducationData[];
-  setEducationData: (data: EducationData[]) => void;
+  // setEducationData: (data: EducationData[]) => void;
   handleChangeEducation: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleAddEducation: () => void;
 };
 
 function EducationField({
   educationData,
-  setEducationData,
+  // setEducationData,
   handleChangeEducation,
+  handleAddEducation,
 }: EducationFieldProp): JSX.Element {
   const [edit, setEdit] = useState(false);
-
-  function handleAddEducation() {
-    setEducationData([
-      ...educationData,
-      {
-        id: uuidv4(),
-        schoolName: '',
-        title: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-      },
-    ]);
-  }
 
   return (
     <>
@@ -39,16 +27,16 @@ function EducationField({
           {edit ? 'Edit' : 'Save'} Education Info
         </button>
         <Input
+          id={uuidv4()}
           value={educationData[0].schoolName}
-          id="schoolName"
           label="School Name"
           name="schoolName"
           onChange={(e) => handleChangeEducation(e)}
           text={educationData[0].schoolName}
         />
         <Input
+          id={uuidv4()}
           value={educationData[0].title}
-          id="title"
           label="Title"
           name="title"
           onChange={(e) => handleChangeEducation(e)}
@@ -56,7 +44,7 @@ function EducationField({
         />
         <Input
           value={educationData[0].location}
-          id="location"
+          id={uuidv4()}
           label="Location"
           name="location"
           onChange={(e) => handleChangeEducation(e)}
@@ -64,7 +52,7 @@ function EducationField({
         />
         <Input
           value={educationData[0].startDate}
-          id="startDate"
+          id={uuidv4()}
           label="Start Date"
           name="startDate"
           onChange={(e) => handleChangeEducation(e)}
@@ -72,7 +60,7 @@ function EducationField({
         />
         <Input
           value={educationData[0].endDate}
-          id="endDate"
+          id={uuidv4()}
           label="End Date"
           name="endDate"
           onChange={(e) => handleChangeEducation(e)}
