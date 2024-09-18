@@ -64,22 +64,13 @@ function App() {
   const [educationData, setEducationData] = useState<EducationData>([
     {
       id: uuidv4(),
-      schoolName: 'Federico II',
+      schoolName: '',
       title: '',
       location: '',
       startDate: '',
       endDate: '',
     },
   ]);
-
-  function handleEducationData(e: ChangeEvent<HTMLInputElement>) {
-    const { value, name } = e.target;
-    setEducationData((prev) => {
-      const updatedData = [...prev];
-      updatedData[0] = { ...updatedData[0], [name]: value };
-      return updatedData;
-    });
-  }
 
   // const [experienceData, setExperienceData] = useState<ExperienceData[]>([
   //   {
@@ -103,7 +94,6 @@ function App() {
         <EducationField
           setEducationData={setEducationData}
           educationData={educationData}
-          handleEducationData={handleEducationData}
         />
       </InfoSection>
       <Resume>
