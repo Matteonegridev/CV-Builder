@@ -6,9 +6,8 @@ import EducationField from './Components/Education';
 // import ExperienceField from './Components/Experience';
 // import SkillsField from './Components/Skills';
 import CurriculumView from './Components/CV';
-import { v4 as uuidv4 } from 'uuid';
-
 import { ChangeEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export type PersonalData = {
   fullName: string;
@@ -16,7 +15,7 @@ export type PersonalData = {
   mobile: string;
   address: string;
   email: string;
-}[];
+};
 
 export type EducationData = {
   id: string;
@@ -42,23 +41,17 @@ export type SkillsData = {
 }[];
 
 function App() {
-  const [personalData, setPersonalData] = useState([
-    {
-      fullName: 'Negri Matteo',
-      position: '',
-      mobile: '',
-      address: '',
-      email: '',
-    },
-  ]);
+  const [personalData, setPersonalData] = useState({
+    fullName: 'Negri Matteo',
+    position: 'Web Developer',
+    mobile: '+xx-xxx-xxxx-xxx',
+    address: '82832 Lake Buena Vista, Orlando',
+    email: 'matteonegri.bsn@gmail.com',
+  });
 
   function handlePersonalData(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setPersonalData((prev) => {
-      const updatedData = [...prev];
-      updatedData[0] = { ...updatedData[0], [name]: value };
-      return updatedData;
-    });
+    setPersonalData((prev) => ({ ...prev, [name]: value }));
   }
 
   const [educationData, setEducationData] = useState<EducationData>([
@@ -72,15 +65,31 @@ function App() {
     },
   ]);
 
-  // const [experienceData, setExperienceData] = useState<ExperienceData[]>([
-  //   {
-  //     companyName: '',
-  //     position: '',
-  //     startDate: '',
-  //     endDate: '',
-  //     description: '',
-  //   },
-  // ]);
+  function handleEducationChange(
+    index: number,
+    e: ChangeEvent<HTMLInputElement>,
+  ) {
+    const { name, value } = e.target;
+    const updatedEducation = [...educationData];
+    updatedEducation[index] = { ...updatedEducation[index], [name]: value };
+    setEducationData(updatedEducation);
+  }
+
+  function addEducationField() {
+    setEducationData([
+      ...educationData,
+      {
+        id: uuidv4(),
+        schoolName: '',
+        title: '',
+        location: '',
+        startDate: '',
+        endDate: '',
+      },
+    ]);
+  }
+
+  // const [experienceData, setExperienceData] = useState<ExperienceData>([]);
 
   // const [skillsData, setSkillsData] = useState([]);
 
@@ -92,8 +101,9 @@ function App() {
           handlePersonalData={handlePersonalData}
         />
         <EducationField
-          setEducationData={setEducationData}
           educationData={educationData}
+          handleEducationChange={handleEducationChange}
+          addEducationField={addEducationField}
         />
       </InfoSection>
       <Resume>

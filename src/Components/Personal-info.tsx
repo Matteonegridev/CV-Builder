@@ -17,7 +17,7 @@ function PersonalInfo({ personalData, handlePersonalData }: PersonalInfoProp) {
           label="Full Name"
           text="Full Name"
           name="fullName"
-          value={personalData[0].fullName}
+          value={personalData.fullName}
           onChange={handlePersonalData}
         />
       </Form>

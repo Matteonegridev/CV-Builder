@@ -8,22 +8,23 @@ type CurriculumViewProp = {
 function CurriculumView({ personalData, educationData }: CurriculumViewProp) {
   const educationArrayMap = educationData.map((edu) => (
     <div key={edu.id}>
-      <h1>{edu.schoolName}</h1>
-      <p>{edu.location}</p>
-      <p>{edu.title}</p>
-      <p>{edu.startDate}</p>
-      <p>{edu.endDate}</p>
+      <p>{edu.schoolName || 'Your School'}</p>
+      <p>{edu.location || 'Location'}</p>
+      <p>{edu.title || 'Title'}</p>
+      <p>{edu.startDate || 'Start Date'}</p>
+      <p>{edu.endDate || 'End Date or Current'}</p>
     </div>
   ));
   return (
     <>
       <div>
-        <h1>{personalData[0].fullName}</h1>
-        <p>{personalData[0].position}</p>
-        <p>{personalData[0].email}</p>
-        <p>{personalData[0].mobile}</p>
-        <p>{personalData[0].address}</p>
+        <h1>{personalData.fullName}</h1>
+        <p>{personalData.position}</p>
+        <p>{personalData.email}</p>
+        <p>{personalData.mobile}</p>
+        <p>{personalData.address}</p>
       </div>
+      <h1 className="text-4xl">Education</h1>
       {educationArrayMap}
     </>
   );
