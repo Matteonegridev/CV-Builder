@@ -2,25 +2,24 @@ import { Form } from '../Utils/Form';
 import { Input } from '../Utils/Inputs';
 
 import { type PersonalData } from '../App';
+import { ChangeEvent } from 'react';
 
 type PersonalInfoProp = {
   personalData: PersonalData[];
+  handlePersonalData: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-function PersonalInfo({ personalData }: PersonalInfoProp) {
+function PersonalInfo({ personalData, handlePersonalData }: PersonalInfoProp) {
   return (
     <>
       <Form>
-        {personalData.map((v, i) => (
-          <Input
-            key={i}
-            label="Full Name"
-            id={`full-name${i}`}
-            text="Full Name"
-            name="fullName"
-            value={v.fullName}
-          />
-        ))}
+        <Input
+          label="Full Name"
+          text="Full Name"
+          name="fullName"
+          value={personalData[0].fullName}
+          onChange={handlePersonalData}
+        />
       </Form>
     </>
   );

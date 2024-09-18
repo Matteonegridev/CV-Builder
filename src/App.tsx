@@ -2,11 +2,13 @@ import { InfoSection } from './Layout/Info';
 import { Body } from './Layout/Body';
 import { Resume } from './Layout/Resume';
 import PersonalInfo from './Components/Personal-info';
+import EducationField from './Components/Education';
 // import ExperienceField from './Components/Experience';
-// import EducationField from './Components/Education';
 // import SkillsField from './Components/Skills';
+import CurriculumView from './Components/CV';
+import { v4 as uuidv4 } from 'uuid';
 
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export type PersonalData = {
   fullName: string;
@@ -16,15 +18,8 @@ export type PersonalData = {
   email: string;
 };
 
-export type ExperienceData = {
-  companyName: string;
-  position: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-};
-
 export type EducationData = {
+  id: string;
   schoolName: string;
   title: string;
   location: string;
@@ -32,14 +27,59 @@ export type EducationData = {
   endDate: string;
 };
 
+export type ExperienceData = {
+  id: string;
+  companyName: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+};
+
 export type SkillsData = {
+  id: string;
   skills: string[];
 };
 
 function App() {
   const [personalData, setPersonalData] = useState([
-    { fullName: '', position: '', mobile: '', address: '', email: '' },
+    {
+      fullName: 'Negri Matteo',
+      position: '',
+      mobile: '',
+      address: '',
+      email: '',
+    },
   ]);
+
+  function handlePersonalData(e: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setPersonalData((prev) => {
+      const updatedData = [...prev];
+      updatedData[0] = { ...updatedData[0], [name]: value };
+      return updatedData;
+    });
+  }
+
+  const [educationData, setEducationData] = useState<EducationData[]>([
+    {
+      id: uuidv4(),
+      schoolName: '',
+      title: '',
+      location: '',
+      startDate: '',
+      endDate: '',
+    },
+  ]);
+
+  function handleEducationData(e: ChangeEvent<HTMLInputElement>) {
+    const { value, name } = e.target;
+    setEducationData((prev) => {
+      const updatedData = [...prev];
+      updatedData[0] = { ...updatedData[0], [name]: value };
+      return updatedData;
+    });
+  }
 
   // const [experienceData, setExperienceData] = useState<ExperienceData[]>([
   //   {
@@ -50,23 +90,28 @@ function App() {
   //     description: '',
   //   },
   // ]);
-  // const [educationData, setEducationData] = useState<EducationData[]>([
-  //   {
-  //     schoolName: '',
-  //     title: '',
-  //     location: '',
-  //     startDate: '',
-  //     endDate: '',
-  //   },
-  // ]);
+
   // const [skillsData, setSkillsData] = useState([]);
 
   return (
     <Body>
       <InfoSection>
-        <PersonalInfo personalData={personalData} />
+        <PersonalInfo
+          personalData={personalData}
+          handlePersonalData={handlePersonalData}
+        />
+        <EducationField
+          setEducationData={setEducationData}
+          educationData={educationData}
+          handleEducationData={handleEducationData}
+        />
       </InfoSection>
-      <Resume children={undefined}></Resume>
+      <Resume>
+        <CurriculumView
+          personalData={personalData}
+          educationData={educationData}
+        />
+      </Resume>
     </Body>
   );
 }
