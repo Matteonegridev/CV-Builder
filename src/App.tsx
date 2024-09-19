@@ -42,11 +42,11 @@ export type SkillsData = {
 
 function App() {
   const [personalData, setPersonalData] = useState({
-    fullName: 'Negri Matteo',
-    position: 'Web Developer',
-    mobile: '+xx-xxx-xxxx-xxx',
-    address: '82832 Lake Buena Vista, Orlando',
-    email: 'matteonegri.bsn@gmail.com',
+    fullName: '',
+    position: '',
+    mobile: '',
+    address: '',
+    email: '',
   });
 
   function handlePersonalData(e: ChangeEvent<HTMLInputElement>) {

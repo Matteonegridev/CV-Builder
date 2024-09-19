@@ -18,11 +18,11 @@ function CurriculumView({ personalData, educationData }: CurriculumViewProp) {
   return (
     <>
       <div>
-        <h1>{personalData.fullName}</h1>
-        <p>{personalData.position}</p>
-        <p>{personalData.email}</p>
-        <p>{personalData.mobile}</p>
-        <p>{personalData.address}</p>
+        <h1>{personalData.fullName || 'Matteo Negri'}</h1>
+        <p>{personalData.position || 'Web Developer'}</p>
+        <p>{personalData.email || 'email@domain.com'}</p>
+        <p>{personalData.mobile || '+xx-xxx-xxxx-xxx'}</p>
+        <p>{personalData.address || 'Los Santos, San Andreas'}</p>
       </div>
       <h1 className="text-4xl">Education</h1>
       {educationArrayMap}
