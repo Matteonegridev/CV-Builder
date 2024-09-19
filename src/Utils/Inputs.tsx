@@ -1,27 +1,36 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
-type InputProps = {
+type InputProps<T> = {
   label: string;
   text: string;
-  name: string;
+  name: keyof T;
   value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  setData: Dispatch<SetStateAction<T>>;
 };
 
 type TextareaProp = {
   label: string;
   name: string;
   value: string;
+  text: string;
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
-export function Input({
+export function Input<T>({
   label,
   text,
   value,
   name,
-  onChange,
-}: InputProps): JSX.Element {
+  setData,
+}: InputProps<T>): JSX.Element {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
   return (
     <div className="flex flex-col">
       <label className="~text-base/xl">{label}</label>
@@ -29,8 +38,8 @@ export function Input({
         value={value}
         className="border px-2 py-2"
         placeholder={text}
-        name={name}
-        onChange={onChange}
+        name={name as string}
+        onChange={handleChange}
       />
     </div>
   );
@@ -40,6 +49,7 @@ export function Textarea({
   label,
   value,
   name,
+  text,
   onChange,
 }: TextareaProp): JSX.Element {
   return (
@@ -50,6 +60,7 @@ export function Textarea({
         onChange={onChange}
         value={value}
         name={name}
+        placeholder={text}
       />
     </div>
   );
