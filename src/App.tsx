@@ -93,7 +93,7 @@ function App() {
         location: '',
         startDate: '',
         endDate: '',
-        isCollapsed: false,
+        isCollapsed: true,
       },
     ]);
   }

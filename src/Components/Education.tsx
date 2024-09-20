@@ -3,6 +3,7 @@ import { Form } from '../Utils/Form';
 import { Input } from '../Utils/Inputs';
 import { AddButton } from '../Utils/Buttons';
 import { IsCollapsedButton } from '../Utils/Buttons';
+import { RemoveButton } from '../Utils/Buttons';
 
 type T = {
   id: string;
@@ -18,12 +19,12 @@ type T = {
 type EducationFieldProp = {
   educationData: EducationData;
   setEducationData: React.Dispatch<React.SetStateAction<T[]>>;
+  addEducationField: () => void;
   handleChange: (
     index: string,
     e: React.ChangeEvent<HTMLInputElement>,
     setState: React.Dispatch<React.SetStateAction<T[]>>,
   ) => void;
-  addEducationField: () => void;
 };
 
 function EducationField({
@@ -33,23 +34,32 @@ function EducationField({
   addEducationField,
 }: EducationFieldProp) {
   const className =
-    'rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700';
+    'rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 ~text-xs/lg';
 
   return (
     <Form>
       <h3 className="mb-4 text-xl font-semibold">Education</h3>
+      {/*Render div with inputs that takes id for each different entry we add */}
       {educationData.map((edu) => (
         <div key={edu.id} className="mb-4">
-          <IsCollapsedButton
-            id={edu.id}
-            text={edu.isCollapsed ? 'Edit' : 'Save'}
-            setAll={setEducationData}
-            className={
-              edu.isCollapsed
-                ? `${className} + bg-red-500 hover:bg-red-700`
-                : className
-            }
-          />
+          <div className="flex items-center justify-between">
+            <IsCollapsedButton
+              id={edu.id}
+              text={edu.isCollapsed ? 'Edit' : 'Save'}
+              setAll={setEducationData}
+              className={
+                edu.isCollapsed
+                  ? `${className} + bg-red-500 hover:bg-red-700`
+                  : className
+              }
+            />
+            <RemoveButton
+              id={edu.id}
+              text="Remove Experience"
+              setAll={setEducationData}
+            />
+          </div>
+          {/* Shows input if condition id true */}
           {!edu.isCollapsed && (
             <>
               <Input
@@ -98,7 +108,7 @@ function EducationField({
           )}
         </div>
       ))}
-      <AddButton onClick={addEducationField} text="Add More" />
+      <AddButton onClick={addEducationField} text="More" />
     </Form>
   );
 }

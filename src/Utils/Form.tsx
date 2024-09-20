@@ -16,7 +16,7 @@ export function Form({ children }: FormProps) {
         onClick={() => setShowForm(!showForm)}
         className="self-center justify-self-center rounded-md bg-blue-500 px-5 py-2 text-white ~text-base/xl"
       >
-        {showForm ? 'Edit' : 'Save'} Education Info
+        {showForm ? 'Edit' : 'Save'} Info
       </button>
       {children}
     </div>
