@@ -25,6 +25,7 @@ export type EducationData = {
   location: string;
   startDate: string;
   endDate: string;
+  isCollapsed: boolean;
 }[];
 
 export type ExperienceData = {
@@ -64,6 +65,7 @@ function App() {
       location: '',
       startDate: '',
       endDate: '',
+      isCollapsed: true,
     },
   ]);
 
@@ -91,6 +93,7 @@ function App() {
         location: '',
         startDate: '',
         endDate: '',
+        isCollapsed: false,
       },
     ]);
   }
@@ -109,7 +112,6 @@ function App() {
         <EducationField
           setEducationData={setEducationData}
           educationData={educationData}
-          // handleEducationChange={handleEducationChange}
           addEducationField={addEducationField}
           handleChange={handleChange}
         />
