@@ -9,7 +9,7 @@ export function Form({ children }: FormProps) {
   return (
     <div
       className={`flex flex-col gap-4 overflow-hidden p-6 shadow-md transition-all duration-500 ease-in-out ${
-        showForm ? 'max-h-20' : 'max-h-[600px]'
+        showForm ? 'max-h-20' : 'max-h-full'
       }`}
     >
       <button

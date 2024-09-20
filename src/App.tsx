@@ -67,14 +67,15 @@ function App() {
     },
   ]);
 
-  function handleEducationChange(
+  function handleChange<T extends { id?: string }>(
     index: string,
-    e: ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement>,
+    setState: React.Dispatch<React.SetStateAction<T[]>>,
   ) {
     const { name, value } = e.target;
-    setEducationData(
-      educationData.map((education) =>
-        education.id === index ? { ...education, [name]: value } : education,
+    setState((prev) =>
+      prev.map((item) =>
+        item.id === index ? { ...item, [name]: value } : item,
       ),
     );
   }
@@ -106,9 +107,11 @@ function App() {
           handlePersonalData={handlePersonalData}
         />
         <EducationField
+          setEducationData={setEducationData}
           educationData={educationData}
-          handleEducationChange={handleEducationChange}
+          // handleEducationChange={handleEducationChange}
           addEducationField={addEducationField}
+          handleChange={handleChange}
         />
       </InfoSection>
       <Resume>

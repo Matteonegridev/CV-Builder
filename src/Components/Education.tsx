@@ -1,23 +1,34 @@
 import { type EducationData } from '../App';
 import { Form } from '../Utils/Form';
-// import { ChangeEvent, useState } from 'react';
-// import { Form } from '../Utils/Form';
 import { Input } from '../Utils/Inputs';
-// import { AddButton } from '../Utils/AddButton';
-// import { v4 as uuidv4 } from 'uuid';
+import { AddButton } from '../Utils/AddButton';
+
+type T = {
+  id: string;
+  schoolName: string;
+  title: string;
+  field: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+};
 
 type EducationFieldProp = {
   educationData: EducationData;
-  handleEducationChange: (
+  setEducationData: React.Dispatch<React.SetStateAction<T[]>>;
+  handleChange: (
     index: string,
     e: React.ChangeEvent<HTMLInputElement>,
+    setState: React.Dispatch<React.SetStateAction<T[]>>,
   ) => void;
   addEducationField: () => void;
 };
 
 function EducationField({
   educationData,
-  handleEducationChange,
+  setEducationData,
+  // handleEducationChange,
+  handleChange,
   addEducationField,
 }: EducationFieldProp) {
   return (
@@ -28,53 +39,48 @@ function EducationField({
           <Input
             label="School Name"
             name="schoolName"
-            onChange={(e) => handleEducationChange(edu.id, e)}
+            onChange={(e) => handleChange(edu.id, e, setEducationData)}
             text="Enter school"
             value={edu.schoolName}
           />
           <Input
             label="Title or Degree"
             name="title"
-            onChange={(e) => handleEducationChange(edu.id, e)}
+            onChange={(e) => handleChange(edu.id, e, setEducationData)}
             text="Enter title"
             value={edu.title}
           />
           <Input
             label="Field of Study"
             name="field"
-            onChange={(e) => handleEducationChange(edu.id, e)}
+            onChange={(e) => handleChange(edu.id, e, setEducationData)}
             text="Enter field of study"
             value={edu.field}
           />
           <Input
             label="Location"
             name="location"
-            onChange={(e) => handleEducationChange(edu.id, e)}
+            onChange={(e) => handleChange(edu.id, e, setEducationData)}
             text="Enter location"
             value={edu.location}
           />
           <Input
             label="Start Date"
             name="startDate"
-            onChange={(e) => handleEducationChange(edu.id, e)}
+            onChange={(e) => handleChange(edu.id, e, setEducationData)}
             text="Start date"
             value={edu.startDate}
           />
           <Input
             label="End Date"
             name="endDate"
-            onChange={(e) => handleEducationChange(edu.id, e)}
+            onChange={(e) => handleChange(edu.id, e, setEducationData)}
             text="End date"
             value={edu.endDate}
           />
         </div>
       ))}
-      <button
-        onClick={addEducationField}
-        className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
-      >
-        Add More Education
-      </button>
+      <AddButton onClick={addEducationField} text="Add More" />
     </Form>
   );
 }
