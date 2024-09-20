@@ -21,6 +21,7 @@ export type EducationData = {
   id: string;
   schoolName: string;
   title: string;
+  field: string;
   location: string;
   startDate: string;
   endDate: string;
@@ -59,6 +60,7 @@ function App() {
       id: uuidv4(),
       schoolName: '',
       title: '',
+      field: '',
       location: '',
       startDate: '',
       endDate: '',
@@ -66,13 +68,15 @@ function App() {
   ]);
 
   function handleEducationChange(
-    index: number,
+    index: string,
     e: ChangeEvent<HTMLInputElement>,
   ) {
     const { name, value } = e.target;
-    const updatedEducation = [...educationData];
-    updatedEducation[index] = { ...updatedEducation[index], [name]: value };
-    setEducationData(updatedEducation);
+    setEducationData(
+      educationData.map((education) =>
+        education.id === index ? { ...education, [name]: value } : education,
+      ),
+    );
   }
 
   function addEducationField() {
@@ -82,6 +86,7 @@ function App() {
         id: uuidv4(),
         schoolName: '',
         title: '',
+        field: '',
         location: '',
         startDate: '',
         endDate: '',

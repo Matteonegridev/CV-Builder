@@ -2,14 +2,14 @@ import { type EducationData } from '../App';
 import { Form } from '../Utils/Form';
 // import { ChangeEvent, useState } from 'react';
 // import { Form } from '../Utils/Form';
-// import { Input } from '../Utils/Inputs';
+import { Input } from '../Utils/Inputs';
 // import { AddButton } from '../Utils/AddButton';
 // import { v4 as uuidv4 } from 'uuid';
 
 type EducationFieldProp = {
   educationData: EducationData;
   handleEducationChange: (
-    index: number,
+    index: string,
     e: React.ChangeEvent<HTMLInputElement>,
   ) => void;
   addEducationField: () => void;
@@ -23,47 +23,49 @@ function EducationField({
   return (
     <Form>
       <h3 className="mb-4 text-xl font-semibold">Education</h3>
-      {educationData.map((edu, index) => (
-        <div key={index} className="mb-4">
-          <input
-            type="text"
+      {educationData.map((edu) => (
+        <div key={edu.id} className="mb-4">
+          <Input
+            label="School Name"
             name="schoolName"
-            placeholder="School"
+            onChange={(e) => handleEducationChange(edu.id, e)}
+            text="Enter school"
             value={edu.schoolName}
-            onChange={(e) => handleEducationChange(index, e)}
-            className="mb-2 block w-full rounded border p-2"
           />
-          <input
-            type="text"
+          <Input
+            label="Title or Degree"
             name="title"
-            placeholder="Title"
+            onChange={(e) => handleEducationChange(edu.id, e)}
+            text="Enter title"
             value={edu.title}
-            onChange={(e) => handleEducationChange(index, e)}
-            className="mb-2 block w-full rounded border p-2"
           />
-          <input
-            type="text"
+          <Input
+            label="Field of Study"
+            name="field"
+            onChange={(e) => handleEducationChange(edu.id, e)}
+            text="Enter field of study"
+            value={edu.field}
+          />
+          <Input
+            label="Location"
             name="location"
-            placeholder="Location"
+            onChange={(e) => handleEducationChange(edu.id, e)}
+            text="Enter location"
             value={edu.location}
-            onChange={(e) => handleEducationChange(index, e)}
-            className="mb-2 block w-full rounded border p-2"
           />
-          <input
-            type="text"
+          <Input
+            label="Start Date"
             name="startDate"
-            placeholder="Start Date"
+            onChange={(e) => handleEducationChange(edu.id, e)}
+            text="Start date"
             value={edu.startDate}
-            onChange={(e) => handleEducationChange(index, e)}
-            className="mb-2 block w-full rounded border p-2"
           />
-          <input
-            type="text"
+          <Input
+            label="End Date"
             name="endDate"
-            placeholder="End Date or Current"
+            onChange={(e) => handleEducationChange(edu.id, e)}
+            text="End date"
             value={edu.endDate}
-            onChange={(e) => handleEducationChange(index, e)}
-            className="mb-2 block w-full rounded border p-2"
           />
         </div>
       ))}
