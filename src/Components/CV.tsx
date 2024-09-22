@@ -42,6 +42,7 @@ function CurriculumView({
       </div>
       <h1 className="text-4xl">Education</h1>
       {educationFields}
+      <h1 className="text-4xl">Work Experience</h1>
       {experienceFields}
     </>
   );

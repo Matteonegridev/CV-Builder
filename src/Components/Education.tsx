@@ -55,7 +55,7 @@ function EducationField({
             />
             <RemoveButton
               id={edu.id}
-              text="Remove Experience"
+              text="Remove Education"
               setAll={setEducationData}
             />
           </div>
