@@ -9,7 +9,6 @@ type T = {
   id: string;
   schoolName: string;
   title: string;
-  field: string;
   location: string;
   startDate: string;
   endDate: string;
@@ -63,13 +62,6 @@ function EducationField({
           {!edu.isCollapsed && (
             <>
               <Input
-                label="School Name"
-                name="schoolName"
-                onChange={(e) => handleChange(edu.id, e, setEducationData)}
-                text="Enter school"
-                value={edu.schoolName}
-              />
-              <Input
                 label="Title or Degree"
                 name="title"
                 onChange={(e) => handleChange(edu.id, e, setEducationData)}
@@ -77,11 +69,11 @@ function EducationField({
                 value={edu.title}
               />
               <Input
-                label="Field of Study"
-                name="field"
+                label="School Name"
+                name="schoolName"
                 onChange={(e) => handleChange(edu.id, e, setEducationData)}
-                text="Enter field of study"
-                value={edu.field}
+                text="Enter school"
+                value={edu.schoolName}
               />
               <Input
                 label="Location"

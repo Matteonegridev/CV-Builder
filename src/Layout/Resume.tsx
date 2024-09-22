@@ -6,7 +6,7 @@ type ResumeProp = {
 
 export function Resume({ children }: ResumeProp): JSX.Element {
   return (
-    <section className="min-h-screen border border-slate-700">
+    <section className="min-h-screen border border-slate-700 p-4">
       {children}
     </section>
   );

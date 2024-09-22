@@ -21,7 +21,6 @@ export type EducationData = {
   id: string;
   schoolName: string;
   title: string;
-  field: string;
   location: string;
   startDate: string;
   endDate: string;
@@ -64,7 +63,6 @@ function App() {
       id: uuidv4(),
       schoolName: '',
       title: '',
-      field: '',
       location: '',
       startDate: '',
       endDate: '',
