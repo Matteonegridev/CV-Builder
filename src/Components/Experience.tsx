@@ -52,7 +52,7 @@ function ExperienceField({
           />
         </div>
       ))}
-      <AddButton onClick={addExperienceField} text="Add More" />
+      <AddButton onClick={addExperienceField} text="Experience" />
     </Form>
   );
 }

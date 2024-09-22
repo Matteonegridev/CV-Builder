@@ -73,8 +73,8 @@ function App() {
   ]);
 
   function addEducationField() {
-    setEducationData([
-      ...educationData,
+    setEducationData((prev) => [
+      ...prev,
       {
         id: uuidv4(),
         schoolName: '',
@@ -103,8 +103,8 @@ function App() {
   ]);
 
   function addExperienceField() {
-    setExperienceData([
-      ...experienceData,
+    setExperienceData((prev) => [
+      ...prev,
       {
         id: uuidv4(),
         companyName: '',

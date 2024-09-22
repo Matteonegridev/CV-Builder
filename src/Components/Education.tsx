@@ -108,7 +108,7 @@ function EducationField({
           )}
         </div>
       ))}
-      <AddButton onClick={addEducationField} text="More" />
+      <AddButton onClick={addEducationField} text="Education" />
     </Form>
   );
 }
