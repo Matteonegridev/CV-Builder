@@ -22,7 +22,7 @@ type EducationFieldProp = {
   addEducationField: () => void;
   handleChange: (
     index: string,
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     setState: React.Dispatch<React.SetStateAction<T[]>>,
   ) => void;
 };

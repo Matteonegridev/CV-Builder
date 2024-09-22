@@ -1,12 +1,17 @@
-import { type PersonalData, EducationData } from '../App';
+import { type PersonalData, EducationData, ExperienceData } from '../App';
 
 type CurriculumViewProp = {
   personalData: PersonalData;
   educationData: EducationData;
+  experienceData: ExperienceData;
 };
 
-function CurriculumView({ personalData, educationData }: CurriculumViewProp) {
-  const educationArrayMap = educationData.map((edu) => (
+function CurriculumView({
+  personalData,
+  educationData,
+  experienceData,
+}: CurriculumViewProp) {
+  const educationFields = educationData.map((edu) => (
     <div key={edu.id}>
       <p>{edu.schoolName || 'Your School'}</p>
       <p>{edu.title || 'Title'}</p>
@@ -14,6 +19,16 @@ function CurriculumView({ personalData, educationData }: CurriculumViewProp) {
       <p>{edu.location || 'Location'}</p>
       <p>{edu.startDate || 'Start Date'}</p>
       <p>{edu.endDate || 'End Date or Current'}</p>
+    </div>
+  ));
+  const experienceFields = experienceData.map((exp) => (
+    <div key={exp.id}>
+      <p>{exp.companyName || 'Company Name'}</p>
+      <p>{exp.position || 'Your Position'}</p>
+      <p>{exp.startDate || 'Start Date'}</p>
+      <p>{exp.endDate || 'End Date'}</p>
+      <p>{exp.location || 'Location'}</p>
+      <p>{exp.description || 'Add a Description'}</p>
     </div>
   ));
   return (
@@ -26,7 +41,8 @@ function CurriculumView({ personalData, educationData }: CurriculumViewProp) {
         <p>{personalData.address || 'Los Santos, San Andreas'}</p>
       </div>
       <h1 className="text-4xl">Education</h1>
-      {educationArrayMap}
+      {educationFields}
+      {experienceFields}
     </>
   );
 }
