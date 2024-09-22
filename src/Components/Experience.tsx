@@ -59,18 +59,18 @@ function ExperienceField({
           {!exp.isCollapsed && (
             <>
               <Input
-                label="Company Name"
-                name="companyName"
-                onChange={(e) => handleChange(exp.id, e, setExperienceData)}
-                text="Enter Company Name"
-                value={exp.companyName}
-              />
-              <Input
                 label="Position"
                 name="position"
                 onChange={(e) => handleChange(exp.id, e, setExperienceData)}
                 text="Enter your Position"
                 value={exp.position}
+              />
+              <Input
+                label="Company Name"
+                name="companyName"
+                onChange={(e) => handleChange(exp.id, e, setExperienceData)}
+                text="Enter Company Name"
+                value={exp.companyName}
               />
               <Input
                 label="Location"

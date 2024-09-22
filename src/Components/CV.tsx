@@ -28,13 +28,27 @@ function CurriculumView({
     </div>
   ));
   const experienceFields = experienceData.map((exp) => (
-    <div key={exp.id}>
-      <p>{exp.companyName || 'Company Name'}</p>
-      <p>{exp.position || 'Your Position'}</p>
-      <p>{exp.startDate || 'Start Date'}</p>
-      <p>{exp.endDate || 'End Date'}</p>
-      <p>{exp.location || 'Location'}</p>
-      <p>{exp.description || 'Add a Description'}</p>
+    <div className="mt-3" key={exp.id}>
+      <div className="flex items-center justify-between">
+        <h5 className="font-headings font-medium ~text-lg/2xl">
+          {exp.position || 'Your Position'}
+        </h5>
+        <div className="font-headings font-medium ~text-lg/xl">
+          <p>
+            {exp.startDate || 'Start Date'} -{' '}
+            <span>{exp.endDate || 'End Date'}</span>
+          </p>
+        </div>
+      </div>
+      <div>
+        <h6 className="font-paragraph font-semibold ~text-base/lg">
+          {exp.companyName || 'Company Name'},{' '}
+          <span> {exp.location || 'Location'}</span>
+        </h6>
+      </div>
+      <p className="w-[100ch] text-pretty font-paragraph ~text-sm/lg">
+        {exp.description || 'Add a Description'}
+      </p>
     </div>
   ));
   return (
@@ -48,7 +62,7 @@ function CurriculumView({
             {personalData.position || 'Web Developer'}
           </p>
         </div>
-        <div className="font [&>p]:font-paragraph flex justify-around border-b border-gray-500 p-4 [&>p]:text-secondSubtext [&>p]:~text-xs/lg">
+        <div className="font flex justify-around border-b border-gray-500 p-4 [&>p]:font-paragraph [&>p]:text-secondSubtext [&>p]:~text-xs/lg">
           <p>{personalData.email || 'email@domain.com'}</p>
           <p>{personalData.mobile || '+xx-xxx-xxxx-xxx'}</p>
           <p>{personalData.address || 'Los Santos, San Andreas'}</p>
