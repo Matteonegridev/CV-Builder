@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .section-heading {
-  @apply font-headings pb-2 pt-8 text-4xl;
+  @apply pb-2 pt-8 font-headings text-4xl font-bold text-primary;
 }

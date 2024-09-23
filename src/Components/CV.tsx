@@ -11,22 +11,6 @@ function CurriculumView({
   educationData,
   experienceData,
 }: CurriculumViewProp) {
-  const educationFields = educationData.map((edu) => (
-    <div className="mt-3" key={edu.id}>
-      <h6 className="font-headings font-medium ~text-lg/2xl">
-        {edu.title || 'Title'}
-      </h6>
-      <p className="font-paragraph ~text-base/xl">
-        {edu.schoolName || 'Your School'},{' '}
-        <span> {edu.location || 'Location'}</span>{' '}
-      </p>
-
-      <p className="font-paragraph text-secondSubtext ~text-sm/base">
-        {edu.startDate || 'Start Date'} -{' '}
-        <span>{edu.endDate || 'End Date or Current'}</span>
-      </p>
-    </div>
-  ));
   const experienceFields = experienceData.map((exp) => (
     <div className="mt-3" key={exp.id}>
       <div className="flex items-center justify-between">
@@ -51,27 +35,48 @@ function CurriculumView({
       </p>
     </div>
   ));
+  const educationFields = educationData.map((edu) => (
+    <div className="mt-3" key={edu.id}>
+      <h6 className="font-headings font-medium ~text-lg/2xl">
+        {edu.title || 'Title'}
+      </h6>
+      <p className="font-paragraph ~text-base/xl">
+        {edu.schoolName || 'Your School'},{' '}
+        <span> {edu.location || 'Location'}</span>{' '}
+      </p>
+
+      <p className="font-paragraph text-secondSubtext ~text-sm/base">
+        {edu.startDate || 'Start Date'} -{' '}
+        <span>{edu.endDate || 'End Date or Current'}</span>
+      </p>
+    </div>
+  ));
+
   return (
     <>
       <div>
         <div className="flex items-center justify-between p-4 pb-7 pt-7">
-          <h1 className="font-headings font-bold ~text-2xl/5xl">
+          <h1 className="font-headings font-bold text-primary ~text-2xl/6xl">
             {personalData.fullName || 'Matteo Negri'}
           </h1>
           <p className="font-paragraph ~text-sm/lg">
             {personalData.position || 'Web Developer'}
           </p>
         </div>
-        <div className="font flex justify-around border-b border-gray-500 p-4 [&>p]:font-paragraph [&>p]:text-secondSubtext [&>p]:~text-xs/lg">
+        <div className="font flex justify-around border-b-[3px] border-primary p-4 [&>p]:font-paragraph [&>p]:text-secondSubtext [&>p]:~text-xs/lg">
           <p>{personalData.email || 'email@domain.com'}</p>
           <p>{personalData.mobile || '+xx-xxx-xxxx-xxx'}</p>
           <p>{personalData.address || 'Los Santos, San Andreas'}</p>
         </div>
       </div>
-      <h1 className="section-heading">Education</h1>
-      {educationFields}
-      <h1 className="section-heading">Work Experience</h1>
-      {experienceFields}
+      <div className="border-b border-primary pb-6">
+        <h1 className="section-heading">Work Experience</h1>
+        {experienceFields}
+      </div>
+      <div className="border-b border-primary pb-6">
+        <h1 className="section-heading">Education</h1>
+        {educationFields}
+      </div>
     </>
   );
 }

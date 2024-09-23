@@ -9,14 +9,8 @@ module.exports = {
     fontSize,
     extend: {
       colors: {
-        primary: '#daff6f',
-        secondary: '#a8aeff',
-        tertiary: '#e6e6fa',
-        black: '#161616',
-        subtext: '#d3d3d3',
+        primary: '#00487C',
         secondSubtext: '#717171',
-        secondaryAccent: '#CDD0ED',
-        primaryAccent: '#EFFFC3',
       },
       fontFamily: {
         headings: 'Roboto Slab',

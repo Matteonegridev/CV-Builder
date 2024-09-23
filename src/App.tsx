@@ -139,17 +139,17 @@ function App() {
           personalData={personalData}
           handlePersonalData={handlePersonalData}
         />
-        <EducationField
-          setEducationData={setEducationData}
-          educationData={educationData}
-          addEducationField={addEducationField}
-          handleChange={handleChange}
-        />
         <ExperienceField
           addExperienceField={addExperienceField}
           experienceData={experienceData}
           handleChange={handleChange}
           setExperienceData={setExperienceData}
+        />
+        <EducationField
+          setEducationData={setEducationData}
+          educationData={educationData}
+          addEducationField={addEducationField}
+          handleChange={handleChange}
         />
       </InfoSection>
       <Resume>
