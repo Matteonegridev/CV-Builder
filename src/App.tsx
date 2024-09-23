@@ -4,7 +4,7 @@ import { Resume } from './Layout/Resume';
 import PersonalInfo from './Components/Personal-info';
 import EducationField from './Components/Education';
 import ExperienceField from './Components/Experience';
-// import SkillsField from './Components/Skills';
+import SkillsField from './Components/Skills';
 import CurriculumView from './Components/CV';
 import { ChangeEvent, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -41,6 +41,7 @@ export type ExperienceData = {
 export type SkillsData = {
   id: string;
   skills: string;
+  description: string;
 }[];
 
 function App() {
@@ -116,7 +117,25 @@ function App() {
     ]);
   }
 
-  // const [skillsData, setSkillsData] = useState([]);
+  //  SKILLS:
+  const [skillsData, setSkillsData] = useState([
+    {
+      id: uuidv4(),
+      skills: '',
+      description: '',
+    },
+  ]);
+
+  function addSkillsField() {
+    setSkillsData([
+      ...skillsData,
+      {
+        id: uuidv4(),
+        skills: '',
+        description: '',
+      },
+    ]);
+  }
 
   // handleChange for all states:
   function handleChange<T extends { id?: string }>(
@@ -151,12 +170,19 @@ function App() {
           addEducationField={addEducationField}
           handleChange={handleChange}
         />
+        <SkillsField
+          addSkillsField={addSkillsField}
+          handleChange={handleChange}
+          setSkillsData={setSkillsData}
+          skillsData={skillsData}
+        />
       </InfoSection>
       <Resume>
         <CurriculumView
           personalData={personalData}
           educationData={educationData}
           experienceData={experienceData}
+          skillsData={skillsData}
         />
       </Resume>
     </Body>

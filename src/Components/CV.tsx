@@ -1,15 +1,22 @@
-import { type PersonalData, EducationData, ExperienceData } from '../App';
+import {
+  type PersonalData,
+  EducationData,
+  ExperienceData,
+  SkillsData,
+} from '../App';
 
 type CurriculumViewProp = {
   personalData: PersonalData;
   educationData: EducationData;
   experienceData: ExperienceData;
+  skillsData: SkillsData;
 };
 
 function CurriculumView({
   personalData,
   educationData,
   experienceData,
+  skillsData,
 }: CurriculumViewProp) {
   const experienceFields = experienceData.map((exp) => (
     <div className="mt-3" key={exp.id}>
@@ -30,7 +37,7 @@ function CurriculumView({
           <span> {exp.location || 'Location'}</span>
         </h6>
       </div>
-      <p className="w-[100ch] text-pretty font-paragraph ~text-sm/lg">
+      <p className="w-[100%] text-pretty font-paragraph ~text-sm/lg">
         {exp.description || 'Add a Description'}
       </p>
     </div>
@@ -49,6 +56,18 @@ function CurriculumView({
         {edu.startDate || 'Start Date'} -{' '}
         <span>{edu.endDate || 'End Date or Current'}</span>
       </p>
+    </div>
+  ));
+  const skillsField = skillsData.map((skills) => (
+    <div className="mt-3" key={skills.id}>
+      <ul className="px-7">
+        <li className="list-disc font-headings font-medium ~text-lg/2xl">
+          {skills.skills || 'Your Skill'}
+        </li>
+        <p className="w-[100%] text-pretty font-paragraph ~text-sm/lg">
+          {skills.description || 'Add a Description'}
+        </p>
+      </ul>
     </div>
   ));
 
@@ -77,6 +96,9 @@ function CurriculumView({
         <h1 className="section-heading">Education</h1>
         {educationFields}
       </div>
+
+      <h1 className="section-heading">Skills</h1>
+      {skillsField}
     </>
   );
 }

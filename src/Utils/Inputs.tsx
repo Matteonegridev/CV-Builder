@@ -46,7 +46,7 @@ export function Textarea({
     <div className="flex flex-col">
       <label className="~text-base/xl">{label}</label>
       <textarea
-        className="w-full resize-none overflow-y-hidden border p-2 ~h-14/28"
+        className="resize-none overflow-auto border p-2 ~h-14/28"
         onChange={onChange}
         value={value}
         name={name}
