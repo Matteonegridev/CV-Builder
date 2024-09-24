@@ -9,7 +9,6 @@ type InputProps = {
 };
 
 type TextareaProp = {
-  id: string;
   label: string;
   name: string;
   value: string;
