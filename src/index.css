@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.section-heading {
+  @apply pb-2 pt-8 font-headings text-4xl font-bold text-primary;
+}
