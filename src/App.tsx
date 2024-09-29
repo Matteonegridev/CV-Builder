@@ -141,6 +141,7 @@ function App() {
   function handleChange<T extends { id?: string }>(
     index: string,
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    // setState is a parameter that takes all of the set*  of states I need to change:
     setState: React.Dispatch<React.SetStateAction<T[]>>,
   ) {
     const { name, value } = e.target;
