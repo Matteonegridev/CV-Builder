@@ -49,6 +49,11 @@ function ExperienceField({
               setAll={setExperienceData}
               text={exp.isCollapsed ? 'Edit' : 'Save'}
             />
+            <div className="flex-grow pl-4" key={exp.id}>
+              <small className="font-semibold text-stone-400">
+                {exp.position} position
+              </small>
+            </div>
             <RemoveButton
               text="Remove Experience"
               setAll={setExperienceData}

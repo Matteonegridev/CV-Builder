@@ -8,7 +8,7 @@ export function Form({ children }: FormProps) {
   const [showForm, setShowForm] = useState(false);
   return (
     <div
-      className={`flex flex-col gap-4 overflow-hidden p-6 shadow-md transition-all duration-500 ease-in-out ${
+      className={`flex flex-col gap-6 overflow-hidden p-6 shadow-md transition-all duration-500 ease-in-out ${
         showForm ? 'max-h-20' : 'max-h-full'
       }`}
     >
