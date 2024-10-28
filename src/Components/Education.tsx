@@ -52,6 +52,11 @@ function EducationField({
                   : className
               }
             />
+            <div className="flex-grow pl-4" key={edu.id}>
+              <small className="font-semibold text-stone-400">
+                {edu.title ? edu.title : 'Insert title'}
+              </small>
+            </div>
             <RemoveButton
               id={edu.id}
               text="Remove Education"
