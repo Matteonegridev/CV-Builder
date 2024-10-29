@@ -8,6 +8,7 @@ import SkillsField from './Components/Skills';
 import CurriculumView from './Components/CV';
 import { ChangeEvent, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { PDFViewer } from '@react-pdf/renderer';
 
 export type PersonalData = {
   fullName: string;
@@ -179,12 +180,14 @@ function App() {
         />
       </InfoSection>
       <Resume>
-        <CurriculumView
-          personalData={personalData}
-          educationData={educationData}
-          experienceData={experienceData}
-          skillsData={skillsData}
-        />
+        <PDFViewer width="100%" height="100%">
+          <CurriculumView
+            personalData={personalData}
+            educationData={educationData}
+            experienceData={experienceData}
+            skillsData={skillsData}
+          />
+        </PDFViewer>
       </Resume>
     </Body>
   );

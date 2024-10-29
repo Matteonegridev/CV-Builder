@@ -1,4 +1,13 @@
 import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Font,
+} from '@react-pdf/renderer';
+
+import {
   type PersonalData,
   EducationData,
   ExperienceData,
@@ -12,6 +21,84 @@ type CurriculumViewProp = {
   skillsData: SkillsData;
 };
 
+Font.register({
+  family: 'Montserrat',
+  src: 'https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gnD-w.ttf',
+});
+Font.register({
+  family: 'Open Sans',
+  src: 'https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf',
+});
+
+const styles = StyleSheet.create({
+  page: {
+    padding: 20,
+    backgroundColor: '#ffffff',
+  },
+  section: {
+    marginBottom: 15,
+  },
+  headerName: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#00487C',
+    fontFamily: 'Montserrat',
+  },
+  header: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#00487C',
+    fontFamily: 'Montserrat',
+    paddingBottom: 5,
+  },
+  positionText: {
+    fontSize: 15,
+    fontWeight: 'normal',
+    color: '#717171',
+    fontFamily: 'Open Sans',
+  },
+  subHeader: {
+    fontSize: 14,
+    fontWeight: 'light',
+    color: '#717171',
+    fontFamily: 'Open Sans',
+  },
+  subHeaderDate: {
+    fontSize: 13,
+    fontWeight: 'normal',
+    color: '#717171',
+    fontFamily: 'Open Sans',
+  },
+  text: {
+    fontSize: 12,
+    color: '#333333',
+    fontFamily: 'Open Sans',
+  },
+  subText: {
+    fontSize: 10,
+    color: '#717171',
+    fontFamily: 'Open Sans',
+  },
+
+  flexRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  borderBottom: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc',
+    paddingBottom: 10,
+    marginBottom: 10,
+  },
+  padding: {
+    padding: 15,
+  },
+  paddingTop: {
+    paddingTop: 25,
+  },
+});
+
 function CurriculumView({
   personalData,
   educationData,
@@ -19,87 +106,89 @@ function CurriculumView({
   skillsData,
 }: CurriculumViewProp) {
   const experienceFields = experienceData.map((exp) => (
-    <div className="mt-3" key={exp.id}>
-      <div className="flex items-center justify-between">
-        <h5 className="font-headings font-medium ~text-lg/2xl">
-          {exp.position || 'Your Position'}
-        </h5>
-        <div className="font-headings font-medium ~text-lg/xl">
-          <p>
-            {exp.startDate || 'Start Date'} -{' '}
-            <span>{exp.endDate || 'End Date'}</span>
-          </p>
-        </div>
-      </div>
-      <div>
-        <h6 className="font-paragraph font-semibold ~text-base/lg">
-          {exp.companyName || 'Company Name'},{' '}
-          <span> {exp.location || 'Location'}</span>
-        </h6>
-      </div>
-      <p className="w-[100%] text-pretty font-paragraph ~text-sm/lg">
-        {exp.description || 'Add a Description'}
-      </p>
-    </div>
+    <View style={styles.section} key={exp.id}>
+      <View style={styles.flexRow}>
+        <Text style={styles.subHeader}>{exp.position || 'Your Position'}</Text>
+        <Text style={styles.subHeaderDate}>
+          {exp.startDate || 'Start Date'} - {exp.endDate || 'End Date'}
+        </Text>
+      </View>
+      <Text style={styles.text}>
+        {exp.companyName || 'Company Name'}, {exp.location || 'Location'}
+      </Text>
+      <Text style={styles.text}>{exp.description || 'Add a Description'}</Text>
+    </View>
   ));
-  const educationFields = educationData.map((edu) => (
-    <div className="mt-3" key={edu.id}>
-      <h6 className="font-headings font-medium ~text-lg/2xl">
-        {edu.title || 'Title'}
-      </h6>
-      <p className="font-paragraph ~text-base/xl">
-        {edu.schoolName || 'Your School'},{' '}
-        <span> {edu.location || 'Location'}</span>{' '}
-      </p>
 
-      <p className="font-paragraph text-secondSubtext ~text-sm/base">
-        {edu.startDate || 'Start Date'} -{' '}
-        <span>{edu.endDate || 'End Date or Current'}</span>
-      </p>
-    </div>
+  const educationFields = educationData.map((edu) => (
+    <View style={styles.section} key={edu.id}>
+      <Text style={styles.subHeader}>{edu.title || 'Title'}</Text>
+      <Text style={styles.text}>
+        {edu.schoolName || 'Your School'}, {edu.location || 'Location'}
+      </Text>
+      <Text style={styles.text}>
+        {edu.startDate || 'Start Date'} - {edu.endDate || 'End Date or Current'}
+      </Text>
+    </View>
   ));
+
   const skillsField = skillsData.map((skills) => (
-    <div className="mt-3" key={skills.id}>
-      <ul className="px-7">
-        <li className="list-disc font-headings font-medium ~text-lg/2xl">
-          {skills.skills || 'Your Skill'}
-        </li>
-        <p className="w-[100%] text-pretty font-paragraph ~text-sm/lg">
-          {skills.description || 'Add a Description'}
-        </p>
-      </ul>
-    </div>
+    <View style={styles.section} key={skills.id}>
+      <Text style={styles.subHeader}>{skills.skills || 'Your Skill'}</Text>
+      <Text style={styles.text}>
+        {skills.description || 'Add a Description'}
+      </Text>
+    </View>
   ));
 
   return (
-    <>
-      <div>
-        <div className="flex items-center justify-between p-4 pb-7 pt-7">
-          <h1 className="font-headings font-bold text-primary ~text-2xl/6xl">
+    <Document>
+      <Page style={styles.page}>
+        {/* Header with Personal Information */}
+        <View style={(styles.section, styles.flexRow)}>
+          <Text style={styles.headerName}>
             {personalData.fullName || 'Matteo Negri'}
-          </h1>
-          <p className="font-paragraph ~text-sm/lg">
+          </Text>
+          <Text style={styles.positionText}>
             {personalData.position || 'Web Developer'}
-          </p>
-        </div>
-        <div className="font flex justify-around border-b-[3px] border-primary p-4 [&>p]:font-paragraph [&>p]:text-secondSubtext [&>p]:~text-xs/lg">
-          <p>{personalData.email || 'email@domain.com'}</p>
-          <p>{personalData.mobile || '+xx-xxx-xxxx-xxx'}</p>
-          <p>{personalData.address || 'Los Santos, San Andreas'}</p>
-        </div>
-      </div>
-      <div className="border-b border-primary pb-6">
-        <h1 className="section-heading">Work Experience</h1>
-        {experienceFields}
-      </div>
-      <div className="border-b border-primary pb-6">
-        <h1 className="section-heading">Education</h1>
-        {educationFields}
-      </div>
-
-      <h1 className="section-heading">Skills</h1>
-      {skillsField}
-    </>
+          </Text>
+        </View>
+        {/* Contact Information */}
+        <View
+          style={[
+            styles.flexRow,
+            styles.borderBottom,
+            styles.padding,
+            styles.paddingTop,
+          ]}
+        >
+          <Text style={styles.subText}>
+            {personalData.email || 'email@domain.com'}
+          </Text>
+          <Text style={styles.subText}>
+            {personalData.mobile || '+xx-xxx-xxxx-xxx'}
+          </Text>
+          <Text style={styles.subText}>
+            {personalData.address || 'Los Santos, San Andreas'}
+          </Text>
+        </View>
+        {/* Work Experience Section */}
+        <View style={(styles.section, styles.paddingTop)}>
+          <Text style={styles.header}>Work Experience</Text>
+          {experienceFields}
+        </View>
+        {/* Education Section */}
+        <View style={styles.section}>
+          <Text style={styles.header}>Education</Text>
+          {educationFields}
+        </View>
+        {/* Skills Section */}
+        <View style={styles.section}>
+          <Text style={styles.header}>Skills</Text>
+          {skillsField}
+        </View>
+      </Page>
+    </Document>
   );
 }
 
