@@ -2,12 +2,13 @@ import { Form } from '../Utils/Form';
 import { Input, Textarea } from '../Utils/Inputs';
 import { type SkillsData } from '../App';
 import { ChangeEvent, SetStateAction } from 'react';
-import { AddButton } from '../Utils/Buttons';
+import { AddButton, IsCollapsedButton, RemoveButton } from '../Utils/Buttons';
 
 type T = {
   id: string;
   skills: string;
   description: string;
+  isCollapsed: boolean;
 };
 
 type SkillsFieldProp = {
@@ -27,23 +28,46 @@ function SkillsField({
   handleChange,
   addSkillsField,
 }: SkillsFieldProp) {
+  const className =
+    'rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 ~text-xs/lg';
   return (
     <Form>
       {skillsData.map((skills) => (
         <div key={skills.id} className="mb-4">
-          <Input
-            label="Skills"
-            name="skills"
-            onChange={(e) => handleChange(skills.id, e, setSkillsData)}
-            text="Enter Skills"
-            value={skills.skills}
-          />
-          <Textarea
-            label="Describe your skill"
-            name="description"
-            onChange={(e) => handleChange(skills.id, e, setSkillsData)}
-            value={skills.description}
-          />
+          <div className="flex items-center justify-between pb-2">
+            <IsCollapsedButton
+              id={skills.id}
+              text={skills.isCollapsed ? 'Edit' : 'Save'}
+              setAll={setSkillsData}
+              className={
+                skills.isCollapsed
+                  ? `${className} + bg-red-500 hover:bg-red-700`
+                  : className
+              }
+            />
+            <RemoveButton
+              id={skills.id}
+              setAll={setSkillsData}
+              text="Remove Skill"
+            />
+          </div>
+          {skills.isCollapsed && (
+            <>
+              <Input
+                label="Skills"
+                name="skills"
+                onChange={(e) => handleChange(skills.id, e, setSkillsData)}
+                text="Enter Skills"
+                value={skills.skills}
+              />
+              <Textarea
+                label="Describe your skill"
+                name="description"
+                onChange={(e) => handleChange(skills.id, e, setSkillsData)}
+                value={skills.description}
+              />
+            </>
+          )}
         </div>
       ))}
       <AddButton onClick={addSkillsField} text="Skill" />

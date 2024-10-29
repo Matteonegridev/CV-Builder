@@ -38,7 +38,7 @@ function ExperienceField({
     <Form>
       {experienceData.map((exp) => (
         <div key={exp.id} className="mb-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pb-2">
             <IsCollapsedButton
               className={
                 exp.isCollapsed

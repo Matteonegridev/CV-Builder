@@ -43,6 +43,7 @@ export type SkillsData = {
   id: string;
   skills: string;
   description: string;
+  isCollapsed: boolean;
 }[];
 
 function App() {
@@ -124,6 +125,7 @@ function App() {
       id: uuidv4(),
       skills: '',
       description: '',
+      isCollapsed: true,
     },
   ]);
 
@@ -134,6 +136,7 @@ function App() {
         id: uuidv4(),
         skills: '',
         description: '',
+        isCollapsed: true,
       },
     ]);
   }

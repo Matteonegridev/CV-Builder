@@ -41,7 +41,7 @@ function EducationField({
       {/*Render div with inputs that takes id for each different entry we add */}
       {educationData.map((edu) => (
         <div key={edu.id} className="mb-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pb-2">
             <IsCollapsedButton
               id={edu.id}
               text={edu.isCollapsed ? 'Edit' : 'Save'}
