@@ -6,7 +6,7 @@ import EducationField from './Components/Education';
 import ExperienceField from './Components/Experience';
 import SkillsField from './Components/Skills';
 import CurriculumView from './Components/CV';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { PDFViewer } from '@react-pdf/renderer';
 
@@ -47,34 +47,48 @@ export type SkillsData = {
 }[];
 
 function App() {
-  const [personalData, setPersonalData] = useState({
-    fullName: '',
-    position: '',
-    mobile: '',
-    address: '',
-    email: '',
-  });
+  // Initializer function to load from localStorage or set default
+  const loadData = <T,>(key: string, defaultValue: T): T => {
+    const savedData = localStorage.getItem(key);
+    return savedData ? JSON.parse(savedData) : defaultValue;
+  };
+
+  // PERSONAL DATA:
+  const [personalData, setPersonalData] = useState(() =>
+    loadData('personalData', {
+      fullName: '',
+      position: '',
+      mobile: '',
+      address: '',
+      email: '',
+    }),
+  );
 
   function handlePersonalData(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setPersonalData((prev) => ({ ...prev, [name]: value }));
+    setPersonalData((prev: typeof personalData) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
-  // EDUCATION:
-  const [educationData, setEducationData] = useState<EducationData>([
-    {
-      id: uuidv4(),
-      schoolName: '',
-      title: '',
-      location: '',
-      startDate: '',
-      endDate: '',
-      isCollapsed: true,
-    },
-  ]);
+  // EDUCATION DATA:
+  const [educationData, setEducationData] = useState(() =>
+    loadData('educationData', [
+      {
+        id: uuidv4(),
+        schoolName: '',
+        title: '',
+        location: '',
+        startDate: '',
+        endDate: '',
+        isCollapsed: true,
+      },
+    ]),
+  );
 
   function addEducationField() {
-    setEducationData((prev) => [
+    setEducationData((prev: typeof educationData) => [
       ...prev,
       {
         id: uuidv4(),
@@ -89,22 +103,24 @@ function App() {
     ]);
   }
 
-  // EXPERIENCE:
-  const [experienceData, setExperienceData] = useState<ExperienceData>([
-    {
-      id: uuidv4(),
-      companyName: '',
-      position: '',
-      location: '',
-      startDate: '',
-      endDate: '',
-      description: '',
-      isCollapsed: true,
-    },
-  ]);
+  // EXPERIENCE DATA:
+  const [experienceData, setExperienceData] = useState(() =>
+    loadData('experienceData', [
+      {
+        id: uuidv4(),
+        companyName: '',
+        position: '',
+        location: '',
+        startDate: '',
+        endDate: '',
+        description: '',
+        isCollapsed: true,
+      },
+    ]),
+  );
 
   function addExperienceField() {
-    setExperienceData((prev) => [
+    setExperienceData((prev: typeof experienceData) => [
       ...prev,
       {
         id: uuidv4(),
@@ -119,15 +135,17 @@ function App() {
     ]);
   }
 
-  //  SKILLS:
-  const [skillsData, setSkillsData] = useState([
-    {
-      id: uuidv4(),
-      skills: '',
-      description: '',
-      isCollapsed: true,
-    },
-  ]);
+  // SKILLS DATA:
+  const [skillsData, setSkillsData] = useState(() =>
+    loadData('skillsData', [
+      {
+        id: uuidv4(),
+        skills: '',
+        description: '',
+        isCollapsed: true,
+      },
+    ]),
+  );
 
   function addSkillsField() {
     setSkillsData([
@@ -140,6 +158,14 @@ function App() {
       },
     ]);
   }
+
+  // Save to localStorage
+  useEffect(() => {
+    localStorage.setItem('personalData', JSON.stringify(personalData));
+    localStorage.setItem('educationData', JSON.stringify(educationData));
+    localStorage.setItem('experienceData', JSON.stringify(experienceData));
+    localStorage.setItem('skillsData', JSON.stringify(skillsData));
+  }, [personalData, educationData, experienceData, skillsData]);
 
   // handleChange for all states:
   function handleChange<T extends { id?: string }>(
