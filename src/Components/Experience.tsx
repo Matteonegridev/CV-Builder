@@ -88,14 +88,14 @@ function ExperienceField({
                 label="Start Date"
                 name="startDate"
                 onChange={(e) => handleChange(exp.id, e, setExperienceData)}
-                text="Start Date"
+                text="dd/mm/yyyy"
                 value={exp.startDate}
               />
               <Input
                 label="End Date or Current"
                 name="endDate"
                 onChange={(e) => handleChange(exp.id, e, setExperienceData)}
-                text="End Date"
+                text="dd/mm/yyyy or current"
                 value={exp.endDate}
               />
               <Textarea

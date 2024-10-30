@@ -91,14 +91,14 @@ function EducationField({
                 label="Start Date"
                 name="startDate"
                 onChange={(e) => handleChange(edu.id, e, setEducationData)}
-                text="Start date"
+                text="dd/mm/yyyy"
                 value={edu.startDate}
               />
               <Input
                 label="End Date"
                 name="endDate"
                 onChange={(e) => handleChange(edu.id, e, setEducationData)}
-                text="End date"
+                text="dd/mm/yyyy or current"
                 value={edu.endDate}
               />
             </>
