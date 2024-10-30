@@ -39,7 +39,7 @@ function ExperienceField({
       <h3 className="mb-4 font-headings text-3xl font-semibold">Experience</h3>
       {experienceData.map((exp) => (
         <div key={exp.id} className="mb-4">
-          <div className="flex items-center justify-between pb-2">
+          <div className="flex items-center justify-between rounded-lg p-4 shadow-inner shadow-slate-400">
             <IsCollapsedButton
               className={
                 exp.isCollapsed

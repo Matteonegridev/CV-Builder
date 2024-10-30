@@ -36,7 +36,7 @@ function SkillsField({
       <h3 className="mb-4 font-headings text-3xl font-semibold">Skills</h3>
       {skillsData.map((skills) => (
         <div key={skills.id} className="mb-4">
-          <div className="flex items-center justify-between pb-2">
+          <div className="flex items-center justify-between rounded-lg p-4 shadow-inner shadow-slate-400">
             <IsCollapsedButton
               id={skills.id}
               text={skills.isCollapsed ? 'Edit' : 'Save'}
