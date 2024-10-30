@@ -47,7 +47,7 @@ export type SkillsData = {
 }[];
 
 function App() {
-  // Initializer function to load from localStorage or set default
+  // INITIALIZER FUNCTION:
   const loadData = <T,>(key: string, defaultValue: T): T => {
     const savedData = localStorage.getItem(key);
     return savedData ? JSON.parse(savedData) : defaultValue;

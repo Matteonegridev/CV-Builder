@@ -46,7 +46,7 @@ export function Textarea({
     <div className="flex flex-col">
       <label className="pb-2 pt-2 font-semibold ~text-base/xl">{label}</label>
       <textarea
-        className="resize-none overflow-auto rounded-md border bg-slate-100 p-2 shadow-inner shadow-primary ~h-14/28 focus:outline-primary"
+        className="resize-none overflow-auto rounded-md border bg-slate-100 p-2 font-mono shadow-inner shadow-primary ~h-14/28 focus:outline-primary"
         onChange={onChange}
         value={value}
         name={name}
