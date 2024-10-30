@@ -24,10 +24,10 @@ export function Input({
 }: InputProps): JSX.Element {
   return (
     <div className="flex flex-col">
-      <label className="~text-base/xl">{label}</label>
+      <label className="pb-2 font-semibold ~text-base/xl">{label}</label>
       <input
         value={value}
-        className="border px-2 py-2"
+        className="rounded-md border bg-slate-100 px-2 py-2 font-mono font-thin shadow-inner shadow-primary focus-within:outline-1 focus:outline-primary"
         placeholder={text}
         name={name}
         onChange={onChange}
@@ -44,9 +44,9 @@ export function Textarea({
 }: TextareaProp): JSX.Element {
   return (
     <div className="flex flex-col">
-      <label className="~text-base/xl">{label}</label>
+      <label className="pb-2 ~text-base/xl">{label}</label>
       <textarea
-        className="resize-none overflow-auto border p-2 ~h-14/28"
+        className="resize-none overflow-auto rounded-md border bg-slate-100 p-2 shadow-inner shadow-primary ~h-14/28 focus:outline-primary"
         onChange={onChange}
         value={value}
         name={name}
