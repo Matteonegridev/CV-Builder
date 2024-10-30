@@ -1,11 +1,5 @@
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  Font,
-} from '@react-pdf/renderer';
+import { Document, Page, Text, View, Font } from '@react-pdf/renderer';
+import { styles } from './styleCV/Style';
 
 import {
   type PersonalData,
@@ -30,75 +24,6 @@ Font.register({
   src: 'https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf',
 });
 
-const styles = StyleSheet.create({
-  page: {
-    padding: 20,
-    backgroundColor: '#ffffff',
-  },
-  section: {
-    marginBottom: 15,
-  },
-  headerName: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#00487C',
-    fontFamily: 'Montserrat',
-  },
-  header: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#00487C',
-    fontFamily: 'Montserrat',
-    paddingBottom: 5,
-  },
-  positionText: {
-    fontSize: 15,
-    fontWeight: 'normal',
-    color: '#717171',
-    fontFamily: 'Open Sans',
-  },
-  subHeader: {
-    fontSize: 14,
-    fontWeight: 'light',
-    color: '#717171',
-    fontFamily: 'Open Sans',
-  },
-  subHeaderDate: {
-    fontSize: 13,
-    fontWeight: 'normal',
-    color: '#717171',
-    fontFamily: 'Open Sans',
-  },
-  text: {
-    fontSize: 12,
-    color: '#333333',
-    fontFamily: 'Open Sans',
-  },
-  subText: {
-    fontSize: 10,
-    color: '#717171',
-    fontFamily: 'Open Sans',
-  },
-
-  flexRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  borderBottom: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-    paddingBottom: 10,
-    marginBottom: 10,
-  },
-  padding: {
-    padding: 15,
-  },
-  paddingTop: {
-    paddingTop: 25,
-  },
-});
-
 function CurriculumView({
   personalData,
   educationData,
@@ -113,8 +38,8 @@ function CurriculumView({
           {exp.startDate || 'Start Date'} - {exp.endDate || 'End Date'}
         </Text>
       </View>
-      <Text style={styles.text}>
-        {exp.companyName || 'Company Name'}, {exp.location || 'Location'}
+      <Text style={styles.subSubHeader}>
+        {exp.companyName || 'Company Name'} - {exp.location || 'Location'}
       </Text>
       <Text style={styles.text}>{exp.description || 'Add a Description'}</Text>
     </View>
@@ -123,8 +48,8 @@ function CurriculumView({
   const educationFields = educationData.map((edu) => (
     <View style={styles.section} key={edu.id}>
       <Text style={styles.subHeader}>{edu.title || 'Title'}</Text>
-      <Text style={styles.text}>
-        {edu.schoolName || 'Your School'}, {edu.location || 'Location'}
+      <Text style={styles.subSubHeader}>
+        {edu.schoolName || 'Your School'} - {edu.location || 'Location'}
       </Text>
       <Text style={styles.text}>
         {edu.startDate || 'Start Date'} - {edu.endDate || 'End Date or Current'}
@@ -173,12 +98,16 @@ function CurriculumView({
           </Text>
         </View>
         {/* Work Experience Section */}
-        <View style={(styles.section, styles.paddingTop)}>
+        <View
+          style={
+            (styles.section, styles.paddingTop, styles.borderBottomSection)
+          }
+        >
           <Text style={styles.header}>Work Experience</Text>
           {experienceFields}
         </View>
         {/* Education Section */}
-        <View style={styles.section}>
+        <View style={(styles.section, styles.borderBottomSection)}>
           <Text style={styles.header}>Education</Text>
           {educationFields}
         </View>

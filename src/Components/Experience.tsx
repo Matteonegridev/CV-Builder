@@ -51,7 +51,7 @@ function ExperienceField({
             />
             <div className="flex-grow pl-4" key={exp.id}>
               <small className="font-semibold text-stone-400">
-                {exp.position ? exp.position : 'Insert '} position
+                {exp.position ? exp.position : 'Insert position '}
               </small>
             </div>
             <RemoveButton
