@@ -44,7 +44,7 @@ export function Textarea({
 }: TextareaProp): JSX.Element {
   return (
     <div className="flex flex-col">
-      <label className="pb-2 ~text-base/xl">{label}</label>
+      <label className="pb-2 pt-2 font-semibold ~text-base/xl">{label}</label>
       <textarea
         className="resize-none overflow-auto rounded-md border bg-slate-100 p-2 shadow-inner shadow-primary ~h-14/28 focus:outline-primary"
         onChange={onChange}

@@ -33,11 +33,11 @@ function EducationField({
   addEducationField,
 }: EducationFieldProp) {
   const className =
-    'rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 ~text-xs/lg';
+    'bg-blue-500 px-4 py-2 text-white rounded-lg font-medium hover:bg-blue-700 ~text-xs/lg transition-all ease-in 350ms';
 
   return (
     <Form>
-      <h3 className="mb-4 text-xl font-semibold">Education</h3>
+      <h3 className="mb-4 font-headings text-3xl font-semibold">Education</h3>
       {/*Render div with inputs that takes id for each different entry we add */}
       {educationData.map((edu) => (
         <div key={edu.id} className="mb-4">

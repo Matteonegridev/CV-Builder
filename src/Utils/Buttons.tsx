@@ -19,7 +19,7 @@ type RemoveButtonProps<T extends { id?: string }> = {
 export function AddButton({ onClick, text }: AddButtonProp) {
   return (
     <button
-      className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+      className="350ms rounded-lg bg-blue-500 px-4 py-3 font-medium text-white shadow-sm shadow-primary transition-all ease-in hover:bg-blue-700"
       onClick={onClick}
     >
       Add {text}
@@ -63,7 +63,7 @@ export function RemoveButton<T extends { id?: string }>({
   return (
     <>
       <button
-        className="rounded border border-blue-500 px-4 py-2 ~text-xs/lg hover:bg-blue-700 hover:text-white"
+        className="350ms rounded-lg border border-blue-500 px-4 py-2 font-medium shadow-sm shadow-primary transition-all ease-out ~text-xs/lg hover:bg-blue-700 hover:text-white"
         onClick={() => handleRemove(id, setAll)}
       >
         {text}
