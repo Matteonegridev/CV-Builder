@@ -1,13 +1,28 @@
 import { StyleSheet, Font } from '@react-pdf/renderer';
-import MyCustomFont from '../styleCV/font/EBGaramond-Bold.ttf';
+import EBGaramond from '../styleCV/font/EBGaramond-Bold.ttf';
+import OSSemiBold from '../styleCV/font/OpenSans-SemiBold.ttf';
+import OSItalic from '../styleCV/font/OpenSans-Italic.ttf';
+import OSRegular from '../styleCV/font/OpenSans-Regular.ttf';
 
 Font.register({
   family: 'EB Garamond',
-  src: MyCustomFont,
+  src: EBGaramond,
 });
 Font.register({
   family: 'Open Sans',
-  src: 'https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf',
+  src: OSSemiBold,
+});
+Font.register({
+  family: 'Open Sans Regular',
+  src: OSRegular,
+});
+Font.register({
+  family: 'Open Sans SemiBold',
+  src: OSSemiBold,
+});
+Font.register({
+  family: 'Open Sans Italic',
+  src: OSItalic,
 });
 
 export const styles = StyleSheet.create({
@@ -24,7 +39,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'EB Garamond',
   },
   header: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     color: '#00487C',
     fontFamily: 'EB Garamond',
@@ -32,36 +47,36 @@ export const styles = StyleSheet.create({
   },
   positionText: {
     fontSize: 15,
-    fontWeight: 'normal',
     color: '#717171',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Open Sans Regular',
   },
   subHeader: {
-    fontSize: 15,
-    fontWeight: 'extrabold',
-    fontFamily: 'Open Sans',
+    fontSize: 13,
+    fontWeight: 600,
+    fontFamily: 'Open Sans SemiBold',
   },
   subSubHeader: {
     fontSize: 12,
     fontWeight: 'thin',
     color: '#717171',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Open Sans Italic',
   },
   subHeaderDate: {
     fontSize: 13,
     fontWeight: 'normal',
     color: '#717171',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Open Sans Regular',
   },
   text: {
     fontSize: 12,
     color: '#333333',
-    fontFamily: 'Open Sans',
+    fontWeight: 'normal',
+    fontFamily: 'Open Sans Regular',
   },
   subText: {
     fontSize: 10,
     color: '#717171',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Open Sans Regular',
   },
 
   flexRow: {
