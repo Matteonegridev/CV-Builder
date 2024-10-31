@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, Font } from '@react-pdf/renderer';
+import { Document, Page, Text, View, Svg } from '@react-pdf/renderer';
 import { styles } from './styleCV/Style';
 
 import {
@@ -14,15 +14,6 @@ type CurriculumViewProp = {
   experienceData: ExperienceData;
   skillsData: SkillsData;
 };
-
-Font.register({
-  family: 'Montserrat',
-  src: 'https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gnD-w.ttf',
-});
-Font.register({
-  family: 'Open Sans',
-  src: 'https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf',
-});
 
 function CurriculumView({
   personalData,
@@ -72,10 +63,10 @@ function CurriculumView({
         {/* Header with Personal Information */}
         <View style={(styles.section, styles.flexRow)}>
           <Text style={styles.headerName}>
-            {personalData.fullName || 'Matteo Negri'}
+            {personalData.fullName || 'Fullname Here'}
           </Text>
           <Text style={styles.positionText}>
-            {personalData.position || 'Web Developer'}
+            {personalData.position || 'Position'}
           </Text>
         </View>
         {/* Contact Information */}
@@ -88,13 +79,16 @@ function CurriculumView({
           ]}
         >
           <Text style={styles.subText}>
-            {personalData.email || 'email@domain.com'}
+            <Svg>
+              <i className="fa-solid fa-envelope"></i>
+            </Svg>{' '}
+            {personalData.email || ' email@domain.com'}
           </Text>
           <Text style={styles.subText}>
             {personalData.mobile || '+xx-xxx-xxxx-xxx'}
           </Text>
           <Text style={styles.subText}>
-            {personalData.address || 'Los Santos, San Andreas'}
+            {personalData.address || 'City, Region/State'}
           </Text>
         </View>
         {/* Work Experience Section */}

@@ -1,4 +1,14 @@
-import { StyleSheet } from '@react-pdf/renderer';
+import { StyleSheet, Font } from '@react-pdf/renderer';
+import MyCustomFont from '../styleCV/font/EBGaramond-Bold.ttf';
+
+Font.register({
+  family: 'EB Garamond',
+  src: MyCustomFont,
+});
+Font.register({
+  family: 'Open Sans',
+  src: 'https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf',
+});
 
 export const styles = StyleSheet.create({
   page: {
@@ -9,16 +19,15 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
   },
   headerName: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontSize: 36,
     color: '#00487C',
-    fontFamily: 'Montserrat',
+    fontFamily: 'EB Garamond',
   },
   header: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#00487C',
-    fontFamily: 'Montserrat',
+    fontFamily: 'EB Garamond',
     paddingBottom: 5,
   },
   positionText: {
