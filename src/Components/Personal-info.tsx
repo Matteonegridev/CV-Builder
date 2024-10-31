@@ -12,10 +12,7 @@ type PersonalInfoProp = {
 function PersonalInfo({ personalData, handlePersonalData }: PersonalInfoProp) {
   return (
     <>
-      <Form>
-        <h3 className="mb-4 font-headings text-3xl font-semibold">
-          Personal Info
-        </h3>
+      <Form text="Personal Info">
         <Input
           label="Full Name"
           text="Enter full name"

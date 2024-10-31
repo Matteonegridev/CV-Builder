@@ -35,8 +35,7 @@ function ExperienceField({
   const className =
     'bg-blue-500 px-4 py-2 text-white rounded-lg font-medium hover:bg-blue-700 ~text-xs/lg transition-all ease-in 350ms';
   return (
-    <Form>
-      <h3 className="mb-4 font-headings text-3xl font-semibold">Experience</h3>
+    <Form text="Experiences">
       {experienceData.map((exp) => (
         <div key={exp.id} className="mb-4">
           <div className="flex items-center justify-between rounded-lg p-4 shadow-inner shadow-slate-400">

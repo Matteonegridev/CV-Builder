@@ -2,9 +2,10 @@ import { ReactNode, useState } from 'react';
 
 type FormProps = {
   children: ReactNode;
+  text: string;
 };
 
-export function Form({ children }: FormProps) {
+export function Form({ children, text }: FormProps) {
   const [showForm, setShowForm] = useState(false);
   return (
     <div
@@ -12,12 +13,17 @@ export function Form({ children }: FormProps) {
         showForm ? 'max-h-20' : 'max-h-full'
       }`}
     >
-      <button
-        onClick={() => setShowForm(!showForm)}
-        className="self-center justify-self-center rounded-lg bg-blue-500 px-5 py-2 font-semibold text-white shadow-sm shadow-black ~text-base/xl"
-      >
-        {showForm ? 'Edit' : 'Save'} Info
-      </button>
+      <div className="flex items-center justify-between">
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className="self-center justify-self-center rounded-lg bg-blue-500 px-5 py-2 font-normal text-white shadow-sm shadow-black ~text-base/lg"
+        >
+          {showForm ? 'Edit' : 'Save'} Info
+        </button>{' '}
+        <p className="text-left font-headings font-semibold text-gray-400 ~text-base/3xl">
+          {text}
+        </p>
+      </div>
       {children}
     </div>
   );
